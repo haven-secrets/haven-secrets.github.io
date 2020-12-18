@@ -711,6 +711,10 @@ a {
   align-items: center
 }
 
+#team-header {
+  padding-bottom: 60px;
+}
+
 .team-section {
   padding-top: 0px
 }
@@ -816,7 +820,7 @@ a {
   font-weight: 400
 }
 
-#intro-paragraph {
+.intro-paragraph {
   margin-top: 40px
 }
 
