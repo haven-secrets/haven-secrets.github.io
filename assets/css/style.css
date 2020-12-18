@@ -378,27 +378,27 @@ label {
   color: #fff
 }
 
-.w-nav[data-collapse=all] .w-nav-menu {
+/*.w-nav[data-collapse=all] .w-nav-menu {
   display: none
-}
+}*/
 
 .w-nav[data-collapse=all] .w-nav-button {
   display: block
 }
 
 @media screen and (max-width:991px) {
-  .w-nav[data-collapse=medium] .w-nav-menu {
+/*  .w-nav[data-collapse=medium] .w-nav-menu {
     display: none
-  }
+  }*/
   .w-nav[data-collapse=medium] .w-nav-button {
     display: block
   }
 }
 
 @media screen and (max-width:767px) {
-  .w-nav[data-collapse=small] .w-nav-menu {
+/*  .w-nav[data-collapse=small] .w-nav-menu {
     display: none
-  }
+  }*/
   .w-nav[data-collapse=small] .w-nav-button {
     display: block
   }
@@ -408,9 +408,9 @@ label {
 }
 
 @media screen and (max-width:479px) {
-  .w-nav[data-collapse=tiny] .w-nav-menu {
+/*  .w-nav[data-collapse=tiny] .w-nav-menu {
     display: none
-  }
+  }*/
   .w-nav[data-collapse=tiny] .w-nav-button {
     display: block
   }
@@ -944,7 +944,7 @@ a {
 .hero-image-right {
   position: relative;
   right: 100px;
-  width: 810px
+  width: 660px
 }
 
 .primary-button {
@@ -1268,7 +1268,7 @@ a {
     width: 375px
   }
   .hero-image-right {
-    width: 860px
+    width: 710px
   }
 }
 
@@ -1282,6 +1282,10 @@ a {
 }
 
 @media screen and (max-width:991px) {
+  .link-block {
+    width: 108px;
+  }
+
   h1 {
     font-size: 55px
   }
@@ -1359,7 +1363,7 @@ a {
     grid-template-columns: 1fr 1fr
   }
   .hero-image-left {
-    width: 195px
+    width: 260px
   }
   .hero-image-right {
     width: 590px
@@ -1386,18 +1390,9 @@ a {
     display: -ms-flexbox;
     display: flex
   }
-  .template-logo {
-    max-width: 50px
-  }
   .navigation-wrap {
     padding-right: 30px;
     padding-left: 30px
-  }
-  .nav-menu {
-    display: none
-  }
-  .navigation {
-    display: none
   }
   .image-container {
     display: -webkit-box;
@@ -1412,6 +1407,14 @@ a {
 }
 
 @media screen and (max-width:767px) {
+  .template-logo {
+    max-width: 50px
+  }
+
+  .nav-menu {
+    margin-left: 22px
+  }
+
   h1 {
     font-size: 48px
   }
@@ -1480,7 +1483,7 @@ a {
   }
   .hero-image-left {
     left: 40px;
-    width: 120px
+    width: 175px
   }
   .hero-image-right {
     right: 40px;
@@ -1502,12 +1505,40 @@ a {
   }
 }
 
-@media screen and (max-width:479px) {
+@media screen and (max-width:600px) {
   h1 {
-    font-size: 36px
+    font-size: 39px;
+    line-height: 20px
+  }
+
+  h2 {
+    font-size: 31px
+  }
+
+  p {
+    font-size: 15px
+  }
+
+  .white-h2 {
+    font-size: 31px
+  }
+
+  .h1.centered {
+    font-size: 39px
+  }
+}
+
+@media screen and (max-width:479px) {
+  .nav-menu {
+    margin-left: 12px
+  }
+
+  h1 {
+    font-size: 32px;
+    line-height: 5px
   }
   h2 {
-    font-size: 30px
+    font-size: 27px
   }
   h3 {
     font-size: 24px
@@ -1519,10 +1550,10 @@ a {
     font-size: 18px
   }
   p {
-    font-size: 15px
+    font-size: 14px
   }
   a {
-    font-size: 16px
+    font-size: 15px
   }
   .section {
     padding-top: 45px;
@@ -1545,13 +1576,13 @@ a {
     max-width: 300px
   }
   .white-paragraph {
-    font-size: 16px
+    font-size: 15px
   }
   .white-paragraph.bottom-margin {
     margin-bottom: 20px
   }
   .white-h2 {
-    font-size: 30px
+    font-size: 27px
   }
   .logo-container {
     margin-top: 40px;
@@ -1563,7 +1594,7 @@ a {
     grid-template-rows: auto auto auto
   }
   .h1.centered {
-    font-size: 36px
+    font-size: 32px
   }
   .tabs-menu {
     width: 100%;
@@ -1573,7 +1604,7 @@ a {
     margin-top: 45px
   }
   .hero-image-left {
-    width: 100px
+    width: 150px
   }
   .primary-button.right-margin {
     margin-right: 0;
