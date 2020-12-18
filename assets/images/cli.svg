@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 25.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 2200 1576" style="enable-background:new 0 0 2200 1576;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#4D4D4D;stroke:#4D4D4D;stroke-miterlimit:10;}
+	.st1{fill:#E6E6E6;stroke:#E6E6E6;stroke-miterlimit:10;}
+	.st2{fill:#FFFFFF;}
+	.st3{font-family:'Courier';}
+	.st4{font-size:75px;}
+	.st5{fill:#00F2B1;}
+	.st6{fill:url(#SVGID_1_);}
+</style>
+<path class="st0" d="M2120.7,1545.2H85.2c-31.8,0-57.7-25.8-57.7-57.7V173.8c0-31.8,25.8-57.7,57.7-57.7h2035.5
+	c31.8,0,57.7,25.8,57.7,57.7v1313.7C2178.3,1519.4,2152.5,1545.2,2120.7,1545.2z"/>
+<path class="st1" d="M2121.2,189.5H84.6c-31.5,0-57.1-25.6-57.1-57.1V87.7c0-31.5,25.6-57.1,57.1-57.1h2036.6
+	c31.5,0,57.1,25.6,57.1,57.1v44.7C2178.4,163.9,2152.8,189.5,2121.2,189.5z"/>
+<g>
+	<text transform="matrix(1 0 0 1 108.5523 306.5103)" class="st2 st3 st4">bob % haven run blue-jay dev</text>
+</g>
+<g>
+	<text transform="matrix(1 0 0 1 108.0499 421.3672)" class="st5 st3 st4">Running blue-jay...</text>
+</g>
+<rect x="27.5" y="151.1" class="st0" width="2150.8" height="61.1"/>
+<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="70.2" y1="1482.2" x2="231" y2="1482.2" gradientTransform="matrix(1 0 0 -1 0 1576)">
+	<stop  offset="0" style="stop-color:#00F2B1"/>
+	<stop  offset="0.51" style="stop-color:#1DECC8"/>
+	<stop  offset="1" style="stop-color:#3EE6E1"/>
+</linearGradient>
+<path class="st6" d="M105.2,93.8c0,9.6-7.8,17.5-17.5,17.5s-17.5-7.8-17.5-17.5S78,76.3,87.7,76.3S105.2,84.2,105.2,93.8z
+	 M150.7,76.3c-9.6,0-17.5,7.8-17.5,17.5s7.8,17.5,17.5,17.5c9.6,0,17.5-7.8,17.5-17.5S160.3,76.3,150.7,76.3z M213.5,76.3
+	c-9.6,0-17.5,7.8-17.5,17.5s7.8,17.5,17.5,17.5c9.6,0,17.5-7.8,17.5-17.5S223.2,76.3,213.5,76.3z"/>
+</svg>
