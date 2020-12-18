@@ -523,6 +523,92 @@ label {
   margin-top: 50px
 }
 
+.team-grid {
+  display: -ms-grid;
+  display: grid;
+  width: 100%;
+  -webkit-box-align: start;
+  -webkit-align-items: start;
+  -ms-flex-align: start;
+  align-items: start;
+  grid-auto-columns: 1fr;
+  grid-column-gap: 30px;
+  -ms-grid-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.team-member-wrap {
+  display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center
+}
+
+.team-member-info {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 20px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.team-member-name {
+  margin-bottom: 10px;
+  color: #2B3140;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.team-member-location {
+  font-size: 14px;
+  text-align: center;
+}
+
+.team-member-icons {
+  list-style: none;
+  padding-inline-start: 0px;
+}
+
+ul.team-member-icons li {
+  display: inline;
+}
+
+.team-member-icon {
+  margin: 0px 5px;
+  color: #00F2B1;
+}
+
+.team-member-icon:hover {
+  color: #3ee6e1
+}
+
 body {
   background-color: #fff;
   font-family: Inter, sans-serif;
@@ -623,6 +709,10 @@ a {
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center
+}
+
+.team-section {
+  padding-top: 0px
 }
 
 .header {
@@ -1123,7 +1213,7 @@ a {
   transition: color .3s ease;
   color: #b5bbbf;
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 500;
   text-decoration: none
 }
 
@@ -1407,6 +1497,14 @@ a {
 }
 
 @media screen and (max-width:767px) {
+  .team-grid {
+    grid-row-gap: 30px;
+    -ms-grid-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    -ms-grid-rows: auto auto;
+    grid-template-rows: auto auto;
+  }
+
   .template-logo {
     max-width: 50px
   }
