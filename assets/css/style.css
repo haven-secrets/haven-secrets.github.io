@@ -1714,9 +1714,7 @@ a {
   .hero-images-container {
     margin-top: 45px
   }
-/*  .hero-image-left {
-    width: 150px
-  }*/
+
   .primary-button.right-margin {
     margin-right: 0;
     margin-bottom: 20px
@@ -1741,10 +1739,11 @@ a {
   }*/
 
   .hero-image-left {
-    width: 150px
+    width: 154px
   }
 
   .hero-image-right {
+    right: 40px;
     width: 290px
   }
 
