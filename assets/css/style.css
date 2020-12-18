@@ -1526,6 +1526,14 @@ a {
   .h1.centered {
     font-size: 39px
   }
+
+  .hero-image-left {
+    width: 160px
+  }
+
+  .hero-image-right {
+    width: 390px
+  }
 }
 
 @media screen and (max-width:479px) {
@@ -1628,4 +1636,13 @@ a {
     padding-right: 20px;
     padding-left: 20px
   }
+
+  .hero-image-left {
+    width: 150px
+  }
+
+  .hero-image-right {
+    width: 290px
+  }
+
 }
