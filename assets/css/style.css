@@ -479,14 +479,14 @@ label {
   }
 }
 
-@keyframes spin {
+/*@keyframes spin {
   0% {
     transform: rotate(0)
   }
   100% {
     transform: rotate(360deg)
   }
-}
+}*/
 
 #spin {
   background-image: linear-gradient(111deg, #00f2b1, #3ee6e1);
@@ -494,12 +494,12 @@ label {
   -webkit-text-fill-color: transparent
 }
 
-#spin:after {
+/*#spin:after {
   content: "‏‏‎‏‏‎ ‎centralizing";
   animation: spin 3s linear infinite
 }
-
-@keyframes spin {
+*/
+/*@keyframes spin {
   25% {
     content: "‏‏‎ ‎encrypting‎‎‎‎‏‏‎"
   }
@@ -509,7 +509,7 @@ label {
   75% {
     content: "‏‏‎ ‎securing‏‏‎"
   }
-}
+}*/
 
 .spin {
   align-self: flex-start
