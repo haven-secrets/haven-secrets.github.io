@@ -817,7 +817,8 @@ a {
 
 .white-paragraph {
   color: #b5bbbf;
-  font-weight: 400
+  font-weight: 400;
+  text-align: justify;
 }
 
 .intro-paragraph {
@@ -1548,7 +1549,7 @@ a {
     max-width: 95%
   }
   .white-paragraph.bottom-margin.phone-centered {
-    text-align: center
+    text-align-last: center
   }
   .white-h2.phone-centered {
     margin-bottom: 20px;
