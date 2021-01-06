@@ -113,7 +113,7 @@
           <h2>2 Secrets</h2>
           <h3>2.1 What is a secret?</h3>
           <p>
-            A secret is something you want to keep secret. More specifically, in
+            A secret is something you want to keep <em>secret</em>. More specifically, in
             the context of software applications, it's a sensitive piece of data
             that “authenticates or authorizes you to a system”, as Armon Dadgar,
             co-founder of Hashicorp, defined it[1]. Some examples might help:
@@ -126,7 +126,7 @@
             <li>private keys for TLS/SSL certificates</li>
             <li>SSH keys and certificates</li>
           </ul>
-          <p>#TODO VISUAL-TBD-icons showing a few secrets types</p>
+          <p>#TODO! create visual: icons showing a few secrets types</p>
           <p>
             Each of these are secrets because they are in and of themselves some
             mechanism of access---one that you don't want falling into the wrong
@@ -206,7 +206,7 @@
             a vulnerability related to configuration secrets involving AWS S3
             buckets. The attacker previously worked as a developer for AWS and
             was able to exploit a misconfigured firewall to extract files in a
-            Capital One directory stored on AWS's servers. TODO: add ref
+            Capital One directory stored on AWS's servers. #TODO! add ref
           </p>
           <p>
             Secrets are the keys to the kingdom and as engineers it's our duty
@@ -262,7 +262,7 @@
             what they call "Config Vars".
           </p>
           <p>
-            #TODO! VISUAL-TBD-Heroku screenshot? if no visual here, combine next
+            #TODO! Add visual-Heroku screenshot. Or don't add a visual and combine next
             paragraph with previous
           </p>
           <p>
@@ -287,7 +287,7 @@
             reporting.
           </p>
           <p>
-            #TODO VISUAL-TBD-if no visual here, then combine next paragraph with
+            #TODO! Add visual-TBD. Or don't add a visual, then combine next paragraph with
             previous
           </p>
           <p>
@@ -305,8 +305,7 @@
             key distributed?
           </p>
           <p>
-            #TODO VISUAL-slide-67-altered caption: the master key is now itself
-            a secret
+            #TODO! Add visual of altered slide 67
           </p>
           <h4>
             Following the principle of least privilege isn't a complete solution
@@ -317,8 +316,7 @@
             Jerome Saltzer[6]
           </blockquote>
           <p>
-            #TODO VISUAL-MAYBE-keep out / authorized personnel only
-            ‘sign’/image?
+            #TODO! Add visual, maybe an 'authorized personnel only' sign
           </p>
           <p>
             The principle of least privilege is crucial. It states that anyone
@@ -419,7 +417,7 @@
             some other communication channel, like email.
           </p>
           <p>
-            #TODO VISUAL-MAYBE-icons of a person locking a file and sending in
+            #TODO! Add visual: icons of a person locking a file and sending in
             slack, plus speaking password (‘key’ icon) over phone
           </p>
           <p>
@@ -529,9 +527,7 @@
             below.
           </p>
           <p>
-            #TODO VISUAL-slide-26-modified-to-be-a-gif (I think it used to
-            be--does Rebecca still have it?) Actually sounds like we use that
-            slideshow style thing
+            #TODO! Add new visual, a gif-ified slide 26. Look into the slideshow-style thing shared by cohort.
           </p>
           <p>
             First, you should encrypt client-side. This means secrets are
@@ -582,8 +578,7 @@
           </p>
           <h5>Secrets manager as decoupled, passive component</h5>
           <p>
-            #TODO put text in columns or something alongside pictures. Add
-            picture(s) of ways to do secrets
+            #TODO!  Add visual showing these ways to do secrets. Or if no visual, maybe combine paragraphs.
           </p>
           <meta
             name="image"
@@ -634,7 +629,7 @@
             a child process, and injects the secrets into the environment of
             that process.
           </p>
-          <p>#TODO visual TBD</p>
+          <p>#TODO! Add new visual-TBD</p>
           <p>
             This gives SecretHub some level of control---it can monitor the
             standard-out and standard-error streams of your application, which
@@ -702,11 +697,7 @@
             doesn't already use AWS services, it's not exactly a plug-and-play
             solution. Navigating the AWS ecosystem presents a steep learning
             curve in itself, and Secrets Manager does not come with access
-            control set up for you out of the box. Summary of existing solutions
-            Existing solutions can be categorized in (very) broad strokes as
-            ‘lightweight’, or ‘heavyweight’, where lightweight emphasizes ease
-            of quickly getting started using it, and heavyweight emphasizes
-            features.
+            control set up for you out of the box.
           </p>
           <h4>Summary of existing solutions</h4>
           <p>
@@ -762,7 +753,7 @@
             needs an AWS account, that’s it.
           </p>
           <h4>AWS services used</h4>
-          <p>#TODO VISUAL NEW</p>
+          <p>#TODO! Add new visual</p>
           <h4>Encrypting and decrypting secrets</h4>
           <p>
             Secrets need to be encrypted and decrypted with an encryption key,
@@ -852,7 +843,7 @@
             application called 'BlueJay' that you want to integrate with Haven.
             As the Haven Admin, you are the only person who will be able to
             create/delete projects under this AWS account. After you run the
-            `haven createProject BlueJay`, Haven provisions a DynamoDB table and
+            <code>haven createProject BlueJay</code>, Haven provisions a DynamoDB table and
             set of IAM permission groups for your application BlueJay.
           </p>
 
@@ -968,8 +959,8 @@
           </p>
           <p>
             This server is now able to start interacting with Haven based on the
-            permissions you gave it. You can run your application with `haven
-            run`.
+            permissions you gave it. You can run your application with <code>haven
+            run</code>.
           </p>
           <p>
             #TODO! ADD haven-run-nodeblueJay.gif Switch out gif (it’s missing
@@ -1012,7 +1003,7 @@
             be yet another key that you have to encrypt.
           </p>
           <p>
-            #TODO! ADD master-key-encryption.png
+            TODO! ADD master-key-encryption.png
           </p>
           <meta
             name="image"
@@ -1045,7 +1036,7 @@
             wrapping is also sometimes called envelope encryption.
           </p>
           <p>
-            #TODO! ADD envelope-encryption.png
+            TODO! ADD envelope-encryption.png
           </p>
           <meta
             name="image"
@@ -1083,7 +1074,7 @@
           </p>
           <h5>Bringing it all together</h5>
           <p>
-            #TODO! ADD haven-envelope-encryption.png
+            TODO! ADD haven-envelope-encryption.png
           </p>
           <meta
             name="image"
@@ -1117,7 +1108,7 @@
           </p>
           <h4>Storing secrets</h4>
           <p>
-            #TODO! ADD storing-secrets-sequence.png
+            TODO! ADD storing-secrets-sequence.png
           </p>
           <meta
             name="image"
@@ -1136,7 +1127,7 @@
           </p>
           <h4>Fetching secrets</h4>
           <p>
-            #TODO! ADD getting-secrets-sequence.png
+            TODO! ADD getting-secrets-sequence.png
           </p>
           <meta
             name="image"
@@ -1179,7 +1170,7 @@
             read-write.
           </p>
           <p>
-            #TODO! ADD haven-ui.png
+            TODO! ADD haven-ui.png
           </p>
           <meta
             name="image"
@@ -1209,7 +1200,7 @@
             Admin adds a user, either in the UI or the CLI, then Haven downloads
             a file with temporary credentials and the Haven Admin sends this to
             the new user. Second, the new user places the Haven file in their
-            home directory and runs `haven userSetup`. Haven invokes a lambda
+            home directory and runs <code>haven userSetup</code>. Haven invokes a lambda
             using those temporary credentials, the lambda checks if they’re
             still valid, and if so, returns permanent credentials which Haven
             then puts into the user’s haven file. At this point, the new user
@@ -1217,7 +1208,7 @@
             so that the Haven Admin could add them to projects and environments.
           </p>
           <p>
-            #TODO! ADD haven-usersetup-sequence.png
+            TODO! ADD haven-usersetup-sequence.png
           </p>
           <meta
             name="image"
@@ -1251,7 +1242,7 @@
             application’s secrets aren't stored in a file somewhere on the
             application server (so no secret sprawl in that regard). Second, due
             to the nature of child processes, Haven can redact any secrets
-            leaking out on stdOut or stdErr (we explain how here [TODO: put
+            leaking out on stdOut or stdErr (we explain how here [#TODO!: put
             link]). Finally, this approach makes it easy for the developer: they
             can simply install the Haven package and change their application’s
             start command to include <code>haven run</code>.
@@ -1276,7 +1267,7 @@
           </p>
           <p>
             When we surveyed existing solutions, we noticed that
-            <em>most</em> dedicated secrets managers either permit you to store
+            most dedicated secrets managers either permit you to store
             secrets in env vars if you want to (e.g. Vault), or just always put
             secrets into env vars (e.g. EnvKey). And outside of dedicated
             secrets managers, if you're using Docker's or Kubernetes's built-in
@@ -1307,7 +1298,7 @@
             stdOut and stdErr are piped out from the child to the parent.
           </p>
           <p>
-            #TODO! ADD child-process.png
+            TODO! ADD child-process.png
           </p>
           <meta
             name="image"
@@ -1328,7 +1319,7 @@
             the command that will be ran by Haven.
           </p>
           <p>
-            #TODO! ADD haven-run-bluejay-inject.gif
+            TODO! ADD haven-run-bluejay-inject.gif
           </p>
           <meta
             name="image"
@@ -1345,7 +1336,7 @@
             logged secrets and then logs the redacted result.
           </p>
           <p>
-            #TODO! ADD haven-child-process.png
+            TODO! ADD haven-child-process.png
           </p>
           <meta
             name="image"
@@ -1354,7 +1345,7 @@
           />
           <h2>6 Future Work</h2>
           <p>
-            We'd like to extend our work to include: [TODO: cut to 3-4 and
+            We'd like to extend our work to include: [#TODO!: cut to 3-4 and
             discuss with team]
           </p>
           <ul>
@@ -1367,8 +1358,8 @@
             <li>Man pages</li>
           </ul>
           <h2>7 References</h2>
-          <p>TODO - get references done</p>
-          <p>[1] TODO: find the source of this quote</p>
+          <p>#TODO! - get references done</p>
+          <p>[1] #TODO!: find the source of this quote</p>
           <p>
             [2]<a href="https://www.ibm.com/security/data-breach"
               >https://www.ibm.com/security/data-breach</a
