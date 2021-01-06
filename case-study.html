@@ -1,25 +1,65 @@
 <!DOCTYPE html>
 <html data-wf-page="5f71dd169010d6326b65485d">
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <title>Haven Secrets Manager • Case Study</title>
-    <meta content="width=device-width, initial-scale=1" name="viewport">
-    <link href="assets/css/style.css" rel="stylesheet" type="text/css">
-    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:regular,500,600,700" media="all">
-    <script type="text/javascript">WebFont.load({  google: {    families: ["Inter:regular,500,600,700"]  }});</script>
-    <script type="text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);</script>
-    <link href="assets/images/haven-logo.png" rel="shortcut icon" type="image/x-icon">
-    <link href="assets/images/haven-logo.png" rel="apple-touch-icon">
-    <script src="https://kit.fontawesome.com/d019875f94.js" crossorigin="anonymous"></script>
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <link href="assets/css/style.css" rel="stylesheet" type="text/css" />
+    <script
+      src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"
+      type="text/javascript"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Inter:regular,500,600,700"
+      media="all"
+    />
+    <script type="text/javascript">
+      WebFont.load({ google: { families: ["Inter:regular,500,600,700"] } });
+    </script>
+    <script type="text/javascript">
+      !(function (o, c) {
+        var n = c.documentElement,
+          t = " w-mod-";
+        (n.className += t + "js"),
+          ("ontouchstart" in o ||
+            (o.DocumentTouch && c instanceof DocumentTouch)) &&
+            (n.className += t + "touch");
+      })(window, document);
+    </script>
+    <link
+      href="assets/images/haven-logo.png"
+      rel="shortcut icon"
+      type="image/x-icon"
+    />
+    <link href="assets/images/haven-logo.png" rel="apple-touch-icon" />
+    <script
+      src="https://kit.fontawesome.com/d019875f94.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <div class="navigation-wrap">
-      <div data-collapse="medium" data-animation="default" data-duration="400" role="banner" class="navigation w-nav">
+      <div
+        data-collapse="medium"
+        data-animation="default"
+        data-duration="400"
+        role="banner"
+        class="navigation w-nav"
+      >
         <div class="navigation-container">
           <div class="navigation-left">
-            <a href="/" aria-current="page" class="brand w-nav-brand w--current" aria-label="home">
-              <img src="assets/images/haven-logo.png" alt="" class="template-logo">
+            <a
+              href="/"
+              aria-current="page"
+              class="brand w-nav-brand w--current"
+              aria-label="home"
+            >
+              <img
+                src="assets/images/haven-logo.png"
+                alt=""
+                class="template-logo"
+              />
             </a>
             <nav role="navigation" class="nav-menu w-nav-menu">
               <a href="/case-study" class="link-block w-inline-block">
@@ -33,7 +73,7 @@
           <div class="navigation-right">
             <div class="login-buttons">
               <a href="https://github.com/haven-secrets" target="_blank">
-                <span style="color: #00F2B1">
+                <span style="color: #00f2b1;">
                   <i class="fab fa-github fa-lg"></i>
                 </span>
               </a>
@@ -47,11 +87,1349 @@
       <div class="container">
         <div class="hero-text-container">
           <h1 class="h1 centered">Case Study</h1>
-          <p class="intro-paragraph white-paragraph centered bottom-margin">Why and how we built a secrets management solution</p>
+          <p class="intro-paragraph white-paragraph centered bottom-margin">
+            Why and how we built a secrets management solution
+          </p>
+        </div>
+        <div>
+          <h2 class="h2">1 Introduction</h2>
+          <h3 class="h3">1.1 What is Haven</h3>
+          <p>
+            A major challenge when developing and deploying applications is
+            safely handling secrets such as API keys and other credentials. A
+            good secrets manager can help protect you from security breaches and
+            compromises, and that's where Haven comes in.
+          </p>
+          <p>
+            Haven is an open-source solution for easily and securely managing
+            your application’s secrets. Haven is designed for small teams whose
+            developers work on multiple applications and in multiple
+            environments. For the application developer, Haven makes it easy to
+            securely store and retrieve secrets. For the administrator or team
+            lead, Haven makes it easy to give a developer permission to just the
+            secrets they need.
+          </p>
+          <h2>2 Secrets</h2>
+          <h3>2.1 What is a secret?</h3>
+          <p>
+            A secret is something you want to keep secret. More specifically, in
+            the context of software applications, it's a sensitive piece of data
+            that “authenticates or authorizes you to a system”, as Armon Dadgar,
+            co-founder of Hashicorp, defined it[1]. Some examples might help:
+          </p>
+          <ul>
+            <li>API tokens</li>
+            <li>AWS credentials</li>
+            <li>database passwords</li>
+            <li>encryption and decryption keys</li>
+            <li>private keys for TLS/SSL certificates</li>
+            <li>SSH keys and certificates</li>
+          </ul>
+          <p>#TODO VISUAL-TBD-icons showing a few secrets types</p>
+          <p>
+            Each of these are secrets because they are in and of themselves some
+            mechanism of access---one that you don't want falling into the wrong
+            hands.
+          </p>
+          <h4>Secrets vs. sensitive information</h4>
+          <p>
+            You probably have other sensitive information you’d like to keep
+            secret too, like credit card information or protected health
+            information. But they’re not secrets if they don’t authenticate or
+            authorize you to a system. While all sensitive information must be
+            protected, the scope of our discussion here is limited to secrets.
+          </p>
+
+          <h4>Secrets vs. configuration</h4>
+          <p>
+            Configuration is important because it influences how your
+            application operates, but not all of it is really private. Let’s say
+            your configuration defines parameters for a database connection like
+            an adapter and a password. While the adapter connects your
+            application to the database, it doesn’t authenticate or authorize
+            you in any way and your data won’t be compromised if it were to
+            leak, so we wouldn't call it a secret. To determine if a piece of
+            config is a secret, ask "does this authenticate or authorize me in
+            any way?"
+          </p>
+          <h3>2.2 Secrets need to be managed with care</h3>
+          <h4>
+            Secrets are the keys to your kingdom--yet they're constantly leaked
+          </h4>
+          <p>
+            In 2019, researchers at the North Carolina State University scanned
+            almost 13% of Github’s public repositories and found[4] that
+          </p>
+          <blockquote>
+            not only is secret leakage pervasive – affecting over 100,000
+            repositories – but that thousands of new, unique secrets are leaked
+            every day
+          </blockquote>
+          <p>
+            They noted that it wasn't just inexperienced developers leaking
+            secrets in hobby projects. Several large, prominent organizations
+            were also leaking secrets, including a popular website used by
+            millions of college applicants in the US and a major government
+            agency in Europe—in both cases by exposing their AWS credentials.
+            (You can
+            <a href="https://github.com/search?q=removed+aws+key&type=Commits"
+              >see for yourself</a
+            >
+            how common it is for AWS keys to be pushed to GitHub.)
+          </p>
+
+          <h4>Developers make honest but costly mistakes</h4>
+          <p>
+            DigitalOcean had a bad day on April 5th, 2017 when they discovered
+            that their "primary database had been deleted". As their web
+            release[5] stated:
+          </p>
+          <blockquote>
+            The root cause of this incident was an engineer-driven configuration
+            error. A process performing automated testing was misconfigured
+            using production credentials.
+          </blockquote>
+          <p>
+            This sort of thing has happened many times at many organizations.
+            One thing we should take away from these occurrences is that it's
+            the organization's responsibility to determine who gets access to do
+            what. In some cases of mishandled secrets, it's hard to blame the
+            individual developer for failing to grasp the sensitive nature of
+            secrets they weren't supposed to have access to in the first place.
+          </p>
+          <h4>Malicious actors cause damage</h4>
+          <p>
+            While it's not hard to see that malicious actors getting secrets is
+            bad news, an example never hurts. In 2019, Capital One had a data
+            breach that affected over 100 million individuals, and it was due to
+            a vulnerability related to configuration secrets involving AWS S3
+            buckets. The attacker previously worked as a developer for AWS and
+            was able to exploit a misconfigured firewall to extract files in a
+            Capital One directory stored on AWS's servers. TODO: add ref
+          </p>
+          <p>
+            Secrets are the keys to the kingdom and as engineers it's our duty
+            to safeguard those keys. If we don't, we might cost our customers
+            and our company dearly---or at least face a mad scramble to revoke
+            secrets, obtain new values for those secrets, and possibly redeploy
+            live applications.
+          </p>
+          <h3>2.3 Managing secrets carefully is hard</h3>
+          <p>
+            When managing secrets isn't entirely overlooked, it may still be
+            done poorly. Let's look at a few things that <em>seem</em> on the
+            surface like they might be adequate for managing secrets.
+          </p>
+          <h4>Environment variables aren't a complete solution</h4>
+          <p>
+            The Twelve Factor App methodology popularized the idea of storing
+            config in environment variables to separate config from code[8].
+            Many developers simply treat their secrets as part of their config
+            and think it's adequate to just store secrets in environment
+            variables. Environment variables aren’t 'bad' per se, but depending
+            on them to carry the weight of managing your secrets is unwise, as
+            we’ll see.
+          </p>
+          <h5>Sourcing env vars from files</h5>
+          <p>
+            Environment variables are often set from files. For example, in
+            Node.js development, you might store secrets in a .env file.
+          </p>
+          <p>TODO! ADD dotenv.png</p>
+          <meta
+            name="image"
+            property="og:image"
+            content="assets/images/dotenv.png"
+          />
+          <p>
+            Secrets are loaded from this file into the environment for the
+            application to use. This has the advantage that you simply need to
+            use a different .env file for production versus development
+            environments. But it also obviates one of the advantages of using
+            environment variables--getting secrets <em>out</em> of files. If you
+            <em>do</em> populate env vars from files, you must be vigilant that
+            nobody accidentally checks those files into a public repository or
+            otherwise leaks them. Plus, there's a glaring unanswered question:
+            how are those .env files distributed, and is that done in a secure
+            way?
+          </p>
+          <h5>Environment set as part of some other system</h5>
+          <p>
+            Sometimes your deployment tool or platform provides a way to set
+            environment variables. For example: Heroku, a popular PaaS
+            (Platform-as-a-Service), offers a web-based dashboard for setting
+            what they call "Config Vars".
+          </p>
+          <p>
+            #TODO! VISUAL-TBD-Heroku screenshot? if no visual here, combine next
+            paragraph with previous
+          </p>
+          <p>
+            A developer logs into Heroku and manually enters in their env vars.
+            Of course, a downside of doing this manually is it's tedious and
+            error-prone. And there is no fine-grained access control; anyone
+            that has access to the Heroku account can see all the secrets you
+            have set up. There are a lot of deployment and CI/CD tools, each
+            with (potentially) their own built-in way of managing secrets, and
+            that means multiple ways that secrets could be misconfigured, and
+            multiple potential roadblocks to deploying code since developers
+            have to stop and learn each system's method.
+          </p>
+          <h5>The environment is leaky</h5>
+          <p>
+            Regardless of <em>how</em> environment variables are set, they're
+            still leaky. Since environment variables are passed to children
+            processes, your secrets are made available to anything your
+            application calls, including third-party tools. In particular,
+            application logs can easily include secrets. The environment is
+            often dumped in plaintext into some file for debugging and error
+            reporting.
+          </p>
+          <p>
+            #TODO VISUAL-TBD-if no visual here, then combine next paragraph with
+            previous
+          </p>
+          <p>
+            One can be vigilant about what gets logged, try redacting sensitive
+            information like secrets, take steps to prevent child processes from
+            getting the full environment of the parent, and more---but not all
+            developers are even aware that the environment is leaky.
+          </p>
+          <h4>Encryption isn't a complete solution</h4>
+          <p>
+            Encrypting your secrets <em>is</em> a great idea, but you have some
+            questions to answer, like: Do you store those encrypted secrets in a
+            file, and is that file stored in version control? You might need a
+            "master key" to unlock those secrets, but if so, how is that master
+            key distributed?
+          </p>
+          <p>
+            #TODO VISUAL-slide-67-altered caption: the master key is now itself
+            a secret
+          </p>
+          <h4>
+            Following the principle of least privilege isn't a complete solution
+          </h4>
+          <blockquote>
+            Every program and every privileged user of the system should operate
+            using the least amount of privilege necessary to complete the job. -
+            Jerome Saltzer[6]
+          </blockquote>
+          <p>
+            #TODO VISUAL-MAYBE-keep out / authorized personnel only
+            ‘sign’/image?
+          </p>
+          <p>
+            The principle of least privilege is crucial. It states that anyone
+            working on your applications should only have access to the secrets
+            they need to do their work. But if you're on a small team, and you
+            know everyone personally and trust their intentions, it can be
+            tempting to not bother controlling access to your secrets, because
+            security can get in the way of moving fast. You do need the
+            principle of least privilege, but you also need to be thoughtful
+            about how to easily grant access to those who need it, so that
+            security doesn’t become yet another roadblock for developers.
+          </p>
+          <h4>The security/productivity balancing act</h4>
+          <p>
+            There is a tension between security and productivity, especially
+            when it comes to sharing secrets with other developers.
+          </p>
+          <p>TODO! ADD tension.png</p>
+          <meta
+            name="image"
+            property="og:image"
+            content="assets/images/tension.png"
+          />
+          <p>
+            While it's convenient if a developer can, at any time, send secrets
+            to another developer who, for whatever reason, isn't able to access
+            the secrets they need, there is just no way to maintain control over
+            your secrets if you do that. Engineering teams should accept a
+            little inconvenience to gain a lot of security. Concretely speaking,
+            they should accept that only a select one-to-few "admin" individuals
+            should be able to grant access to secrets. On the other hand, a
+            secrets management solution should get out of the way whenever
+            possible.
+          </p>
+          <h4>The nature of teams makes it extra hard</h4>
+          <p>
+            Let's say we have developers Alice and Bob. Maybe Alice has
+            containerized everything, but the containerized app still needs
+            several passwords to run on Bob's machine. Does he just ask her for
+            them? Will she post them somewhere? Or maybe Bob leaves your team:
+            do you know which secrets he's accessed that you now have to update?
+            Then, do you have to stop your applications, replace those secrets,
+            and redeploy?
+          </p>
+          <p>
+            If you don't have process and security around your secrets, the
+            problems keep stacking. Eventually, you'll find yourself with a big
+            headache called secret sprawl.
+          </p>
+          <h3>2.4 The problem of Secret Sprawl</h3>
+          <p>
+            Secret sprawl is what you have when your secrets are littered across
+            your code, infrastructure, config, and communication channels.
+            Secret sprawl means your secrets could be anywhere.
+          </p>
+          <p>
+            TODO! ADD centralize-sprawl.png and (caption) Secrets get sprawled
+            across code, config, and communication channels.
+          </p>
+          <meta
+            name="image"
+            property="og:image"
+            content="assets/images/centralize-sprawl.png"
+          />
+          <p>
+            TODO! ADD infrastructure-sprawl.png and (caption) Secrets get
+            sprawled across your infrastructure.
+          </p>
+          <meta
+            name="image"
+            property="og:image"
+            content="assets/images/infrastructure-sprawl.png"
+          />
+          <h4>It's easy to get Secret Sprawl</h4>
+          <h5>Secrets get sent around</h5>
+          <p>
+            Let's take a hypothetical team of four developers, and call them
+            Alice, Bob, Charlie, and David. Suppose:
+          </p>
+          <ul>
+            <li>Alice emails a config file containing secrets to Bob</li>
+            <li>Bob Slacks a particular secret to Charlie</li>
+            <li>Charlie accidentally checks it into version control</li>
+            <li>
+              David pulls that code and works off of it, and unintentionally
+              writes code that later ends up logging that secret to a log file.
+            </li>
+          </ul>
+          <h5>Secrets get shared in weird ways</h5>
+          <p>
+            Without a system in place, you might do weird things to provide some
+            measure of security. Going back to our fictional team, maybe Alice
+            decides to take a screenshot of a secret and send that to Bob in
+            Slack--and maybe she even goes back into Slack and deletes that
+            screenshot once the recipient has got the secret. Or alternatively,
+            maybe she puts that secret in a file and locks it with a password,
+            sends the locked file over Slack and sends the password to Bob over
+            some other communication channel, like email.
+          </p>
+          <p>
+            #TODO VISUAL-MAYBE-icons of a person locking a file and sending in
+            slack, plus speaking password (‘key’ icon) over phone
+          </p>
+          <p>
+            When you have to get creative to share your secrets, they easily
+            become even more sprawled.
+          </p>
+          <h4>Secret Sprawl leads to thorny problems</h4>
+          <h5>Teams change</h5>
+          <p>
+            To further complicate the picture, suppose the following plausible
+            events occur:
+          </p>
+          <ul>
+            <li>Alice quits</li>
+            <li>Bob moves over from production to development</li>
+            <li>New-hire Emily joins the team</li>
+          </ul>
+          <p>
+            When Alice quits, how do you ensure Alice doesn't retain access?
+            Does Bob still have production credentials? When Emily joins, does
+            she have to ask around to find what secrets she needs?
+          </p>
+          <p>
+            More likely, Emily won't even know she needs some secrets until she
+            gets to work, finds out she needs some, and has to hunt them down.
+            Without a system in place, she’s unlikely to get, in a complete and
+            controlled manner, all the secrets she’ll need to do her work.
+          </p>
+          <h5>Secrets change</h5>
+          <p>
+            Let's add one more type of event to the mix, which will surely
+            happen much more often than personnel changes:
+          </p>
+          <ul>
+            <li>Charlie updates an API token</li>
+          </ul>
+          <p>
+            How do you ensure Charlie's teammates use the updated version? And
+            what about applications that depend on it? The old token is invalid,
+            so applications will crash if they try using it. It may be a chore
+            for Charlie to hunt down the people that need to know or the places
+            where it needs to be updated.
+          </p>
+          <h4>The questions you can't answer</h4>
+          <p>
+            Secret sprawl means you can't answer questions like these with any
+            degree of confidence:
+          </p>
+          <ul>
+            <li>Who has access to what secrets?</li>
+            <li>When was a particular secret shared or used?</li>
+            <li>
+              If you need to change a secret, where do you have to change it?
+            </li>
+          </ul>
+          <h3>2.5 Centralization helps solve Secret Sprawl</h3>
+          <p>
+            To prevent secret sprawl, you must have a single source of
+            truth---one place where all your secrets live. Establishing this
+            "single source of truth" can be called <em>centralization</em>.
+            Centralization tames secret sprawl, and therefore also paves the way
+            to gaining visibility and control around your secrets.
+          </p>
+          <p>You need to go from this:</p>
+          <p>
+            TODO! ADD centralize-sprawl.png
+          </p>
+          <meta
+            name="image"
+            property="og:image"
+            content="assets/images/centralize-sprawl.png"
+          />
+          <p>To this:</p>
+          <p>
+            TODO! ADD centralize-nosprawl.png
+          </p>
+          <meta
+            name="image"
+            property="og:image"
+            content="assets/images/centralize-nosprawl.png"
+          />
+          <p>
+            Previously, we showed that secrets might be sprawled across your
+            infrastructure. Perhaps they are even passed down service-to-service
+            in your pipeline. But you want it to look more like this:
+          </p>
+          <p>
+            TODO! ADD infrastructure-centralized.png
+          </p>
+          <meta
+            name="image"
+            property="og:image"
+            content="assets/images/infrastructure-centralized.png"
+          />
+          <p>
+            After centralization, only your app has secrets, or rather, whatever
+            service needs secrets will get only the secrets they need. You
+            thereby reduce the attack surface area of your application.
+          </p>
+
+          <h3>2.6 Encryption protects your secrets</h3>
+          <p>
+            In 2.3 we mentioned that encryption alone isn't a complete solution,
+            but when you combine encryption with centralization, you're well on
+            the way toward a great solution. With that in mind, let’s go over a
+            few high-level encryption best practices, illustrated by the gif
+            below.
+          </p>
+          <p>
+            #TODO VISUAL-slide-26-modified-to-be-a-gif (I think it used to
+            be--does Rebecca still have it?) Actually sounds like we use that
+            slideshow style thing
+          </p>
+          <p>
+            First, you should encrypt client-side. This means secrets are
+            encrypted before being transmitted across a network--so secrets
+            never leave your machine unencrypted. That way, you don’t have to
+            trust the party you’re sending it to, nor the communication channel
+            you use. When it comes to security, it’s best to have a
+            multi-layered strategy, so that even if one layer fails, the system
+            is still secure. With that in mind, you should also use an encrypted
+            communication channel, which is called encryption in transit.
+            Encryption in transit can include any temporary stopping points
+            between the client and the final destination. Finally, your storage
+            device should also be encrypted. This is called encryption at rest.
+          </p>
+          <h2>3 Secrets Managers</h2>
+          <h3>3.1 What is a secrets manager?</h3>
+          <p>
+            A secrets manager is a system that helps you securely store and
+            manage your secrets. Secrets managers are inherently centralized.
+            They invariably use encryption in some way, but beyond that, they
+            vary in the use case they are targeted for and in the features they
+            offer.
+          </p>
+          <h3>3.2 How to choose a secrets manager</h3>
+          <p>
+            There are multiple offerings, so you must choose somehow. What do
+            you need to look for in one?
+          </p>
+          <p>
+            First, a secrets manager must keep your secrets
+            <strong>safe</strong>. To do that, it should encrypt your secrets.
+          </p>
+          <p>
+            Second, how does it accommodate multiple users? How does it let you
+            <strong>share access</strong> safely?
+          </p>
+          <p>
+            Third, you need to know how to actually use it in your applications.
+            How do <strong>applications</strong> actually
+            <strong>get secrets</strong>? You might have to significantly adjust
+            your workflow, depending on the solution you pick.
+          </p>
+          <h3>3.3 How secrets managers work with your application</h3>
+          <p>
+            Either your application has to fetch the secrets it needs--so you
+            have to write more application code--or your application is run in a
+            certain context such that it already has the secrets it needs.
+          </p>
+          <h5>Secrets manager as decoupled, passive component</h5>
+          <p>
+            #TODO put text in columns or something alongside pictures. Add
+            picture(s) of ways to do secrets
+          </p>
+          <meta
+            name="image"
+            property="og:image"
+            content="assets/images/secretfetching.png"
+          />
+
+          <p>
+            Using a .env file falls into this category. In NodeJS applications,
+            you would import a ‘dotenv’ module in your application code, and
+            then call a method on that module to load the env-file. A secrets
+            manager might create a .env file or some other file that you have to
+            stick out on your server. Be aware that such a solution itself
+            contributes to secret sprawl! If you are going the distance and
+            using a centralized secrets manager, you don’t want to fall back
+            into secrets sprawl for that final step of getting secrets to your
+            applications.
+          </p>
+          <p>
+            A second kind of secrets manager that falls into this category is
+            storing your secrets in your git repos, in encrypted form. Mozilla
+            has an open-source tool called SOPS that lets you do this. The
+            downsides with this approach is there is no fine-grained access
+            control, or logs, and it doesn’t adhere to separation of concerns
+            (since secrets are much closer to config than code).
+          </p>
+          <p>
+            A third kind of secrets manager that falls into this category is
+            making an API call within your code to fetch secrets. AWS has a
+            product called Secrets Manager. One downside is you need to get
+            familiar with AWS and set all groups and policies yourself.
+          </p>
+          <p>
+            What these kinds of secrets managers all have in common is that you
+            must write application code to fetch secrets.
+          </p>
+          <h5>Secrets manager as tightly coupled component</h5>
+          <p>
+            On the other hand, your application might also be run with the
+            secrets it needs already available. For example, if you use an
+            orchestration service, such as Puppet, or Docker Swarm, there will
+            likely be a built-in way of specifying secrets, which will then be
+            made available in the environment your application code executes in.
+          </p>
+          <p>
+            Another approach that falls in this category is what the secrets
+            manager SecretHub does. SecretHub actually runs your application as
+            a child process, and injects the secrets into the environment of
+            that process.
+          </p>
+          <p>#TODO visual TBD</p>
+          <p>
+            This gives SecretHub some level of control---it can monitor the
+            standard-out and standard-error streams of your application, which
+            lets it <em>redact</em> secrets that you might accidentally be
+            logging. This is the approach the Haven team ended up taking.
+          </p>
+          <h3>3.4 Existing solutions</h3>
+          <h4>Vault by Hashicorp</h4>
+          <p>
+            Vault is the most popular commercial solution. It's highly flexible
+            and extensible; for example, it integrates with the storage backend
+            of your choice, as well as the identity provider of your choice, and
+            can integrate with a broad array of plugins. But Vault is widely
+            regarded as complex, and can be overkill for many teams. Their own
+            docs admit this, "Vault is a complex system that has many different
+            pieces." It is probably the best choice if you need some of the
+            features that only Vault offers, and if your team or organization
+            has the expertise and bandwidth to manage the Vault beast.
+          </p>
+          <h4>Other commercial solutions</h4>
+          <p>
+            Although Vault is dominant, there are other players on the market.
+            Doppler is an early YC startup that launched in late 2020 whose
+            focus is making it "super easy" to manage secrets. One thing that
+            may give users pause is that secrets are sent plaintext to Doppler.
+            EnvKey has a different security model--it takes a "zero trust"
+            approach and encrypts secrets client-side before they are sent over
+            the network. Like Doppler, EnvKey is easy to get started with, but
+            it is not as feature-rich: for example, it lacks secret versioning
+            and the ability to segregate permissions on a per-project basis.
+            SecretHub also does client-side encryption, and is feature-rich, but
+            complex. SecretHub also redacts secrets from stdout and stderr,
+            which helps to prevent secrets being visible in logs locally and/or
+            in any logs that might be shipped off to third parties.
+          </p>
+
+          <p>
+            Ultimately, all commercial solutions are third parties that you have
+            to trust. Many teams prefer using open-source software for a variety
+            of reasons, and when it comes to secrets management, there is one
+            strong reason to: you have full control over the system.
+          </p>
+
+          <h4>Open-source solutions</h4>
+          <p>
+            There are open-source solutions out there, ranging from utility-like
+            tools that tend to require you do a lot to get up and running, to
+            more complete solutions with UIs and built-in access control. The
+            latter, though, tend to be targeted toward specific use cases---for
+            example, Confidant, which was developed by Lyft in 2015. It has a
+            nice UI and intuitive access control, but it is Docker-centric and
+            AWS-centric; it assumes you are using Docker, and also assumes you
+            already use AWS roles for authorization. An example of a more
+            utility-like tool is credstash which, like Confidant, uses AWS under
+            the hood. But it has limited functionality, e.g. no logs and no
+            ability to segregate secrets by project and environment, and it also
+            requires a fair bit of setup, e.g. you need to have an AWS KMS key
+            and your developers all need AWS credentials.
+          </p>
+
+          <h4>AWS Secrets Manager</h4>
+          <p>
+            AWS released their Secrets Manager service recently (2018) and if
+            you're AWS-native, this may be the way to go. However, if your team
+            doesn't already use AWS services, it's not exactly a plug-and-play
+            solution. Navigating the AWS ecosystem presents a steep learning
+            curve in itself, and Secrets Manager does not come with access
+            control set up for you out of the box. Summary of existing solutions
+            Existing solutions can be categorized in (very) broad strokes as
+            ‘lightweight’, or ‘heavyweight’, where lightweight emphasizes ease
+            of quickly getting started using it, and heavyweight emphasizes
+            features.
+          </p>
+          <h4>Summary of existing solutions</h4>
+          <p>
+            Existing solutions can be categorized in (very) broad strokes as
+            ‘lightweight’, or ‘heavyweight’, where lightweight emphasizes ease
+            of quickly getting started using it, and heavyweight emphasizes
+            features.
+          </p>
+          <p>
+            TODO! ADD lightweight-heavyweight.png
+          </p>
+          <meta
+            name="image"
+            property="og:image"
+            content="assets/images/lightweight-heavyweight.png"
+          />
+          <p>
+            Even in the lightweight category, there’s some diversity. For
+            example Doppler emphasizes usability, while arguably EnvKey
+            emphasizes security more. The heavyweight ones, such as SecretHub
+            and Vault, tend to offer more features, but at the cost of greater
+            complexity.
+          </p>
+          <h3>3.5 The missing solution</h3>
+          <p>
+            We saw room for an open-source solution that is easy to get started
+            with and has an interactive UI. Other open source solutions exist
+            but none of them are ideal for getting immediately productive with.
+            Either there’s a <em>lot</em> of setup required, or they are really
+            built for a specific use case. So we built a new solution that is
+            secure but also straightforward and lets you get started in minutes.
+            When building Haven, we had small teams in mind: teams in which
+            developers might work in multiple environments, including
+            production---in which case it’s extra important to have fine-grained
+            access control.
+          </p>
+          <p>
+            TODO! ADD haven-vs-world.png
+          </p>
+          <meta
+            name="image"
+            property="og:image"
+            content="assets/images/haven-vs-world.png"
+          />
+          <h2>4 Introducing Haven</h2>
+          <h3>4.1 Built on AWS</h3>
+          <p>
+            After we did our research on what makes for a good secrets manager
+            and identified the components we’d need to build one, we turned to
+            AWS because they have trusted and long-standing services for each of
+            our development needs. Although we use AWS under the hood, you don't
+            need cloud expertise to productively use Haven---the Haven Admin
+            needs an AWS account, that’s it.
+          </p>
+          <h4>AWS services used</h4>
+          <p>#TODO VISUAL NEW</p>
+          <h4>Encrypting and decrypting secrets</h4>
+          <p>
+            Secrets need to be encrypted and decrypted with an encryption key,
+            and since "successful key management is critical to the security of
+            a cryptosystem" (<a
+              href="https://en.wikipedia.org/wiki/Key_management"
+              >Wikipedia</a
+            >), we opted to use the highly-vetted AWS Key Management Service
+            (AWS KMS). This is the only AWS service Haven uses that does not
+            have a free tier. KMS costs $1 per month per key, so if you use
+            Haven you can expect to pay a dollar a month to AWS.
+          </p>
+          <h4>Haven users</h4>
+          <p>
+            We chose to use AWS Identity and Access Management (IAM) for another
+            crucial piece of our architecture: authentication and authorization.
+            Every time an entity makes a request to a non-public AWS resource,
+            the request goes through IAM first. IAM will deny requests
+            implicitly unless the entity is explicitly authorized to that
+            resource. Using IAM as the gatekeeper for all storage and encryption
+            logic meant that we could ensure only entities we authorized could
+            read secrets, write secrets, and so on.
+          </p>
+          <h3>4.2 Architecture</h3>
+          <p>
+            The architecture of a Haven instance can be roughly split up into
+            two components: the client side and the corresponding AWS
+            infrastructure side. On the client side, each user--be it a a Haven
+            Admin, a developer or an application server--uses the Haven
+            application to interact with the instance’s secrets. All of these
+            users have Haven installed on their personal machines and are using
+            Haven to interact with the same AWS infrastructure, albeit with
+            varying levels of permissions.
+          </p>
+          <p>
+            TODO! ADD havenarchitecture.png
+          </p>
+          <meta
+            name="image"
+            property="og:image"
+            content="assets/images/havenarchitecture.png"
+          />
+          <h3>4.3 How does Haven work?</h3>
+          <p>
+            We'll briefly walk through the three scenarios you'd face when
+            working with Haven. We'll show you how you can get Haven set up as
+            an Admin, including how to integrate Haven into your projects. Then,
+            we'll take a look at how you’d add another user to Haven to work on
+            your projects. Finally, we'll show you how you’d use Haven to
+            provide secrets to your app on a production server.
+          </p>
+          <h4>Setting up Haven</h4>
+          <p>
+            The Haven Admin is the person responsible for creating every project
+            and every user, assigning permissions to said users, and reviewing
+            access logs.
+          </p>
+          <p>
+            To get started, you’d need to install the haven-secrets-cli package
+            from npm. We also have a UI that you can download separately. Both
+            tools, the CLI and the UI, use the same Haven Core package behind
+            the scenes. After installing the npm package, you’d run haven setup,
+            which assigns you as a Haven Admin.
+          </p>
+          <p>
+            TODO! ADD haven-admin-setup.gif
+          </p>
+          <meta
+            name="image"
+            property="og:image"
+            content="assets/images/haven-admin-setup.gif"
+          />
+
+          <p>
+            Above, you see that Haven creates a file called havenAccountFile
+            which contains your Haven credentials. It also sets up your AWS
+            account to provision the backend resources for creating projects and
+            their environments, adding users, setting permissions, and
+            adding/updating secrets. Your AWS account is the only place your
+            secrets will ever be stored with Haven. There is no external Haven
+            server with your secrets.
+          </p>
+          <h5>Integrating your projects</h5>
+          <p>
+            Now that you have Haven set up on our computer, it’s time to start
+            integrating your projects with Haven. Let’s say you have an
+            application called 'BlueJay' that you want to integrate with Haven.
+            As the Haven Admin, you are the only person who will be able to
+            create/delete projects under this AWS account. After you run the
+            `haven createProject BlueJay`, Haven provisions a DynamoDB table and
+            set of IAM permission groups for your application BlueJay.
+          </p>
+
+          <p>
+            TODO! ADD haven-admin-createbluejay.png
+          </p>
+          <meta
+            name="image"
+            property="og:image"
+            content="assets/images/haven-admin-createbluejay.png"
+          />
+          <p>Next, you add all your secrets for the BlueJay project.</p>
+          <p>
+            TODO! ADD haven-admin-bluejay-put.png
+          </p>
+          <meta
+            name="image"
+            property="og:image"
+            content="assets/images/haven-admin-bluejay-put.png"
+          />
+          <p>Your project BlueJay is now integrated with Haven.</p>
+          <p></p>
+          <h4>Adding users</h4>
+          <p>
+            When you create a user either through the UI or CLI tool, Haven will
+            provision temporary credentials for this user that will be saved as
+            to your computer. You'll then send this file to the intended user.
+          </p>
+          <p>
+            TODO! ADD haven-admin-createUser.png
+          </p>
+          <meta
+            name="image"
+            property="og:image"
+            content="assets/images/haven-admin-createUser.png"
+          />
+          <p>
+            Next, your developer will need to install the haven-secrets-cli
+            package from npm to their personal computer. Let’s switch over to
+            the new user’s point of view.
+          </p>
+          <p>
+            TODO! ADD haven-dev-userSetup.png
+          </p>
+          <meta
+            name="image"
+            property="og:image"
+            content="assets/images/haven-dev-userSetup.png"
+          />
+          <p>
+            Above, the dev has received the temporary credentials you sent them
+            and has stored the temporary credentials in a haven folder on their
+            personal computer. Haven users don't even need an AWS account since
+            they'll be working as a user in your AWS account with only the
+            permissions you grant them. Initially, the dev cannot interact with
+            any projects and secrets. The dev must run haven userSetup on their
+            computer after placing their havenAccountFile in their home
+            directory. Haven will then fetch their permanent credentials.
+          </p>
+          <p>
+            TODO! ADD haven-dev-userSetupPerm.png
+          </p>
+          <meta
+            name="image"
+            property="og:image"
+            content="assets/images/haven-dev-userSetupPerm.png"
+          />
+          <p>
+            They will now be able to start interacting with Haven based on the
+            permissions you give to them. You'll be able to grant them read
+            and/or write permissions for secrets on a per-project,
+            per-environment basis. (Granting permissions is an admin-only
+            capability.) Depending on their permissions, they will be able to
+            create, update, and/or read secrets, and also run the application
+            locally using haven run. Below we depict this new user being able to
+            fetch a secret that the admin stored.
+          </p>
+          <p>
+            TODO! ADD haven-admin-dev-putget.png
+          </p>
+          <meta
+            name="image"
+            property="og:image"
+            content="assets/images/haven-admin-dev-putget.png"
+          />
+          <p>
+            If the dev is not authorized to that particular secret, they’ll be
+            denied access:
+          </p>
+          <p>
+            TODO! ADD haven-admin-dev-putget-blocked.png
+          </p>
+          <meta
+            name="image"
+            property="og:image"
+            content="assets/images/haven-admin-dev-putget-blocked.png"
+          />
+          <h4>Using Haven in your application</h4>
+          <p>
+            Finally, let’s look at how you can start using Haven in your
+            applications. First, we assume you run your application on a server,
+            or rather, in an environment that has a filesystem. The Haven Admin
+            then creates a Haven User for them, since every “server user” you
+            create under this AWS account is just another Haven User, like
+            “developer users”. The Haven Admin creates a user and receives a
+            havenAccountFile as you saw in the previous section on Adding Users.
+            Next, the Haven Admin must SSH into the server where your app will
+            run and install Haven globally, or as a dependency in your project,
+            as well as place the havenAccountFile in the home directory of the
+            operating-system user that the application will run from. Then, the
+            Haven Admin will run <code>haven userSetup</code>, just as the dev
+            did in the previous section.
+          </p>
+          <p>
+            This server is now able to start interacting with Haven based on the
+            permissions you gave it. You can run your application with `haven
+            run`.
+          </p>
+          <p>
+            #TODO! ADD haven-run-nodeblueJay.gif Switch out gif (it’s missing
+            the run command e.g. “node bluejay.js”)
+          </p>
+          <meta
+            name="image"
+            property="og:image"
+            content="assets/images/haven-run-nodeblueJay.gif"
+          />
+
+          <h2>5 Building Haven</h2>
+          <p>
+            In section 3.2, we noted that there are three questions you should
+            ask about any secrets manager. The decisions we made and the
+            challenges we faced in building Haven can be described pretty well
+            by answering those questions:
+          </p>
+          <ul>
+            <li>
+              How does it keep your secrets <strong>safe</strong>? (5.1-5.3)
+            </li>
+            <li>
+              How does it let you <strong>share access</strong> safely? (5.4)
+            </li>
+            <li>
+              How do <strong>applications</strong> actually
+              <strong>get secrets</strong>? (5.5)
+            </li>
+          </ul>
+          <h3>5.1 Our encryption scheme</h3>
+          <h4>Solving the “master key” problem</h4>
+          <p>
+            The very notion of encrypting your secrets has an inherent problem:
+            what do you do with the encryption key? Assume you use symmetric
+            encryption, so the encryption key both encrypts and decrypts your
+            secrets. But then that encryption key is itself a secret---and a
+            particularly sensitive one, since it can unlock all of your secrets.
+            You might try to encrypt that key with another key, but that would
+            be yet another key that you have to encrypt.
+          </p>
+          <p>
+            #TODO! ADD master-key-encryption.png
+          </p>
+          <meta
+            name="image"
+            property="og:image"
+            content="assets/images/master-key-encryption.png"
+          />
+          <p>
+            One way to solve this problem is to have a trusted third-party
+            service store an encryption key that you don’t have physical access
+            to. Instead, you dictate who has permissions to use it to perform
+            encryption and decryption operations. For Haven, that trusted
+            third-party service is the battle-tested AWS Key Management Service
+            (KMS). We use KMS to store this key, which we’ll call a “master
+            key”, and limit encryption/decryption access to it via AWS IAM
+            policies. We don’t need to worry about safely storing this master
+            key since AWS handles that. Now let’s see why “master key” is an
+            appropriate name (hint: it’s not the only encryption key used).
+          </p>
+          <h4>Key wrapping</h4>
+          <p>
+            Key wrapping is an encryption best practice and refers to the
+            technique of using two or more layers of keys to protect your data.
+            It involves generating a unique data encryption key for each secret
+            and encrypting the secret using that encryption key. Then the data
+            encryption key is encrypted by the master encryption key. The
+            encrypted key and encrypted secret are then stored until decrypted
+            later. To decrypt your data, you perform this process in reverse:
+            decrypting the data encryption key with the master key and then
+            using the data encryption key to decrypt your secret data. Key
+            wrapping is also sometimes called envelope encryption.
+          </p>
+          <p>
+            #TODO! ADD envelope-encryption.png
+          </p>
+          <meta
+            name="image"
+            property="og:image"
+            content="assets/images/envelope-encryption.png"
+          />
+          <p>
+            There are some advantages to this: first, it’s harder to brute force
+            the encrypted data since each is encrypted using a different key;
+            second, you reduce the attack surface area, because the master key
+            never sees your plaintext data--only plaintext data encryption
+            keys--so an attacker would need access to both your secrets storage
+            and the master key, and in addition, there’s one less instance of
+            your plaintext secrets traveling along the wire. You may be
+            wondering what you do with these encrypted data encryption keys: you
+            store them alongside the encrypted secret itself, often in the same
+            database row.
+          </p>
+          <h5>Implementing encryption best practices</h5>
+          <p>
+            It's a common saying in software that you shouldn't "roll your own
+            crypto"---you should use a vetted cryptographic library. We chose to
+            use AWS's own client-side encryption library, the AWS Encryption
+            SDK, because it adheres to cryptography best practices (like key
+            wrapping). The AWS Encryption SDK requires a master key, so Haven
+            uses the master key in AWS KMS that it created for you in initial
+            setup.
+          </p>
+          <p>
+            When you add or update a secret, it's first encrypted on the client
+            using the SDK and then sent encrypted in transit via TLS to be
+            stored on Amazon DynamoDB, where it is encrypted at rest. Thus Haven
+            follows the best practices of encrypting your secrets client-side,
+            in transit, and at rest.
+          </p>
+          <h5>Bringing it all together</h5>
+          <p>
+            #TODO! ADD haven-envelope-encryption.png
+          </p>
+          <meta
+            name="image"
+            property="og:image"
+            content="assets/images/haven-envelope-encryption.png"
+          />
+          <p>
+            The diagram above shows Haven’s encryption scheme from start to
+            finish. First, to encrypt a datum, a unique data encryption key is
+            generated and is used to encrypt the secret on the client side as
+            seen in the top right. Then, as shown in the top left, that data
+            encryption key is encrypted using the singular master key stored in
+            KMS. Both of these encrypted pieces of information are encrypted in
+            transit via TLS and sent to DynamoDB to be stored alongside each
+            other as shown in the bottom of the diagram. Thus we can see that
+            Haven encrypts your data client side, in transit and at rest up on
+            DynamoDB.
+          </p>
+          <h3>5.2 Storing and fetching secrets</h3>
+          <h4>Choosing DynamoDB</h4>
+          <p>
+            Since Haven sits in the critical path of your application being
+            served, low latency was important to us. High availability was also
+            important. We concluded we did not have any other particular
+            technical needs when it came to storage---scalability was not a
+            concern for us, since small teams will never need tens of thousands
+            of concurrent connections to haven, nor will they need to store
+            billions of secrets. We chose Amazon DynamoDB, because it's a sane
+            default that fits our needs, has good documentation, high
+            availability, and single-digit-milliseconds latency.
+          </p>
+          <h4>Storing secrets</h4>
+          <p>
+            #TODO! ADD storing-secrets-sequence.png
+          </p>
+          <meta
+            name="image"
+            property="og:image"
+            content="assets/images/storing-secrets-sequence.png"
+          />
+          <p>
+            Above, we see that first, Haven first makes a request to the AWS
+            encryption SDK library to encrypt a secret. The SDK checks that the
+            caller has the IAM permission to encrypt, and if so, generates a
+            data encryption key, encrypts the secret value with it, and then
+            encrypts the data encryption key with the master key. Then, Haven
+            takes this encrypted data, and (if the user has permission) stores
+            it in DynamoDB. Haven also stores the secret’s name, version number
+            and whether the secret is flagged, in that same row.
+          </p>
+          <h4>Fetching secrets</h4>
+          <p>
+            #TODO! ADD getting-secrets-sequence.png
+          </p>
+          <meta
+            name="image"
+            property="og:image"
+            content="assets/images/getting-secrets-sequence.png"
+          />
+          <p>
+            Above, we see the inverse: Haven fetches an encrypted secret from
+            DynamoDB, then decrypts it using the Encryption SDK.
+          </p>
+          <h3>5.3 The UI web application</h3>
+          <h4>Running on localhost for security and trust</h4>
+          <p>
+            A secrets manager instantiated as a web application can face the
+            same security hazards as any other application you run over the
+            public web, which we thought best to avoid. The choice to run the
+            Admin/Developer UI Dashboard locally was something we wanted to do
+            from the beginning for this reason; we were inspired by EnvKey,
+            whose FAQ states:
+          </p>
+          <blockquote>
+            Unfortunately, it's still not possible to implement true
+            zero-knowledge end-to-end encryption on the web. Apart from a
+            fundamental chicken-and-egg problem when it comes to server trust,
+            there's no way to protect against all those ever-so-convenient
+            browser extensions that so many folks have given full-page
+            permissions.
+          </blockquote>
+          <p>
+            A second reason we run the UI app locally is to make it clear that
+            Haven does not have a backend “Haven” server, so we could not snoop
+            on your secrets even if we wanted to.
+          </p>
+          <h3>5.4 Sharing access safely</h3>
+          <h4>Supporting multi-project teams with fine-grained permissions</h4>
+          <p>
+            Enforcing the principle of least privilege is important, and Haven
+            makes this easy by limiting access along three dimensions: by
+            project, environment, and by action, where an action is read-only or
+            read-write.
+          </p>
+          <p>
+            #TODO! ADD haven-ui.png
+          </p>
+          <meta
+            name="image"
+            property="og:image"
+            content="assets/images/haven-ui.png"
+          />
+          <p>
+            Above, we see Sue has read-write access to secrets for project
+            Bluejay in the Dev environment.
+          </p>
+          <h4>Mitigating the "initial credentials" problem</h4>
+          <p>
+            Creating credentials for a new haven user means creating a new
+            secret. After all, those Haven credentials may permit the ability to
+            read and write secrets! So how could we ensure that we didn't cause
+            our <em>own</em> secret sprawl?
+          </p>
+          <h5>Temporary credentials</h5>
+          <p>
+            Our solution was to create temporary credentials only good for one
+            hour. These credentials don’t have permissions to do anything except
+            request permanent credentials, so the user must ‘change their
+            password’ before they can do anything else. We use an AWS Lambda
+            function to enforce the one-hour limit. If someone doesn’t use their
+            temporary credentials within an hour, the Haven Admin will need to
+            create a new user. The flow is illustrated below: first, the Haven
+            Admin adds a user, either in the UI or the CLI, then Haven downloads
+            a file with temporary credentials and the Haven Admin sends this to
+            the new user. Second, the new user places the Haven file in their
+            home directory and runs `haven userSetup`. Haven invokes a lambda
+            using those temporary credentials, the lambda checks if they’re
+            still valid, and if so, returns permanent credentials which Haven
+            then puts into the user’s haven file. At this point, the new user
+            would need to tell the Haven Admin that they set up their account,
+            so that the Haven Admin could add them to projects and environments.
+          </p>
+          <p>
+            #TODO! ADD haven-usersetup-sequence.png
+          </p>
+          <meta
+            name="image"
+            property="og:image"
+            content="assets/images/haven-usersetup-sequence.png"
+          />
+          <h4>Revocation of permissions and flagging of secrets</h4>
+          <p>
+            The Haven Admin can easily revoke any permission for any user or
+            even delete users. When a user's permission to some secrets is
+            revoked, those secrets are flagged, and the next time the Haven
+            Admin or a developer uses the UI Dashboard, they will see a red flag
+            next to the secret, indicating they should rotate (change) that
+            secret.
+          </p>
+          <h3>5.5 Providing secrets to applications</h3>
+          <p>
+            Getting secrets to your application should not itself contribute to
+            your secret sprawl, and it should be as easy as possible to do. We
+            settled on an approach similar to what the existing secrets manager
+            SecretHub does.
+          </p>
+          <h4>Secrets injection</h4>
+          <p>
+            When you use SecretHub with your application, SecretHub runs your
+            application as a child process and injects the application’s secrets
+            into that child process as environment variables.
+          </p>
+          <p>
+            Haven works the same way. This has three benefits. First, your
+            application’s secrets aren't stored in a file somewhere on the
+            application server (so no secret sprawl in that regard). Second, due
+            to the nature of child processes, Haven can redact any secrets
+            leaking out on stdOut or stdErr (we explain how here [TODO: put
+            link]). Finally, this approach makes it easy for the developer: they
+            can simply install the Haven package and change their application’s
+            start command to include <code>haven run</code>.
+          </p>
+          <h4>Why environment variables?</h4>
+          <p>
+            There are pros and cons of using environment variables. Some experts
+            believe environment variables should not be used for secrets,
+            because the environment can get leaked or inherited: a logging or
+            debugging tool may dump the environment, or a malicious child
+            process may inherit and read your secrets. Those in the "pro env
+            vars" camp claim that alternatives are at least as insecure as env
+            vars, and that the advantages of env vars outweigh the potential
+            disadvantages. Env vars do have one major security advantage: they
+            die when their process dies. Any environment variables you set for
+            that application are <em>for that process</em>, and will disappear
+            once your application stops running---leaving no trace behind, quite
+            unlike a file. Besides the security advantage, env vars also have
+            two major pragmatic advantages: 1) they’re language agnostic, and
+            effectively OS agnostic as well, and 2) many developers are familiar
+            with environment variables.
+          </p>
+          <p>
+            When we surveyed existing solutions, we noticed that
+            <em>most</em> dedicated secrets managers either permit you to store
+            secrets in env vars if you want to (e.g. Vault), or just always put
+            secrets into env vars (e.g. EnvKey). And outside of dedicated
+            secrets managers, if you're using Docker's or Kubernetes's built-in
+            ways of handling secrets, you'll be setting them as env vars.
+            Whether you use environment variables or not is only a small part of
+            the overall security picture---centralization and encryption are
+            arguably far more important. We decided to use environment
+            variables.
+          </p>
+          <h4>Redacting secrets from an application's stdout and stderr</h4>
+          <p>
+            Secrets stored in environment variables are at risk of showing up in
+            logs via processes that dump the whole environment. We wanted to
+            mitigate that risk. We did so by spawning your application as a
+            child process.
+          </p>
+          <h5>Spawning a child process</h5>
+          <p>
+            A process can simply be thought of as a running program. When you
+            run your application, it runs in a process. Many programming
+            language’s runtime environments allow for the creation of
+            subprocesses, known as <em>child processes</em>. Node.js is one such
+            runtime, and Haven uses the spawn method from the 'childprocess'
+            library built into Node. When using the spawn method, you specify
+            the program you want to run and that program is run as a child
+            process. The stdIO of the child process is piped to and from the
+            parent process: stdIn is piped in to the child from the parent, and
+            stdOut and stdErr are piped out from the child to the parent.
+          </p>
+          <p>
+            #TODO! ADD child-process.png
+          </p>
+          <meta
+            name="image"
+            property="og:image"
+            content="assets/images/child-process.png"
+          />
+          <p>
+            This is what allows us to provide a simple wrapper for your
+            application, making for an easy-to-use secrets manager, as well as
+            what lets us intercept any logging of secrets on stdOut and stdErr
+            and redact them for extra security.
+          </p>
+          <h5>How it works with your application</h5>
+          <p>
+            So how does this child process technique fit into the bigger
+            picture? In the example shown below, note that 'BlueJay' is the
+            Haven project, 'prod' is the environment and 'node blueJay.js' is
+            the command that will be ran by Haven.
+          </p>
+          <p>
+            #TODO! ADD haven-run-bluejay-inject.gif
+          </p>
+          <meta
+            name="image"
+            property="og:image"
+            content="assets/images/haven-run-bluejay-inject.gif"
+          />
+          <p>
+            Haven will fetch the secrets for the project/environment combination
+            and then spawn a child process via the command you passed to Haven
+            using the spawn method from the Node child process library. The
+            secrets are injected into this child process as environment
+            variables, making them available for the application. Then as the
+            application runs, Haven intercepts both stdOut and stdErr, redacts
+            logged secrets and then logs the redacted result.
+          </p>
+          <p>
+            #TODO! ADD haven-child-process.png
+          </p>
+          <meta
+            name="image"
+            property="og:image"
+            content="assets/images/haven-child-process.png"
+          />
+          <h2>6 Future Work</h2>
+          <p>
+            We'd like to extend our work to include: [TODO: cut to 3-4 and
+            discuss with team]
+          </p>
+          <ul>
+            <li>Ability to bulk-add secrets</li>
+            <li>Email integrations</li>
+            <li>Direct plug-ins/integrations with credential providers</li>
+            <li>Support for multiple haven users on a single home-directory</li>
+            <li>Per-user encrypted secrets</li>
+            <li>Per-secret access controls (instead of per-project)</li>
+            <li>Man pages</li>
+          </ul>
+          <h2>7 References</h2>
+          <p>TODO - get references done</p>
+          <p>[1] TODO: find the source of this quote</p>
+          <p>
+            [2]<a href="https://www.ibm.com/security/data-breach"
+              >https://www.ibm.com/security/data-breach</a
+            >
+          </p>
+          <p>[3]</p>
+          <p>
+            [4]<a
+              href="https://www.ndss-symposium.org/wp-content/uploads/2019/02/ndss2019_04B-3_Meli_paper.pdf"
+              >https://www.ndss-symposium.org/wp-content/uploads/2019/02/ndss2019_04B-3_Meli_paper.pdf</a
+            >
+          </p>
+          <p>
+            [5]<a
+              href="https://www.digitalocean.com/blog/update-on-the-april-5th-2017-outage/"
+              >https://www.digitalocean.com/blog/update-on-the-april-5th-2017-outage/</a
+            >
+          </p>
+          <p>
+            [6]<a
+              href="https://en.wikipedia.org/wiki/Principle_of_least_privilege#cite_note-6"
+              >https://en.wikipedia.org/wiki/Principle_of_least_privilege#cite_note-6</a
+            >
+          </p>
+          <p>
+            [7]<a
+              href="https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html#data-to-exclude"
+              >https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html#data-to-exclude</a
+            >
+          </p>
+          <p>
+            [8]
+            <a href="https://12factor.net/config"
+              >https://12factor.net/config</a
+            >
+          </p>
+          <p>
+            [9]<a href="https://www.vaultproject.io/docs/internals/architecture"
+              >https://www.vaultproject.io/docs/internals/architecture</a
+            >
+          </p>
+          <h2>8 Our Team</h2>
+          <p>We're looking for our next opportunity!</p>
+          <p>We are:</p>
+          <ul>
+            <li>Adam Isom, Bay Area, CA TODO! linkedin etc.</li>
+            <li>Dan Marino, New York City, NY TODO! linkedin etc.</li>
+            <li>Aram Podolski, Denver, CO TODO! linkedin etc.</li>
+            <li>Rebecca Nguyen, Toronto, CA TODO! linkedin etc.</li>
+          </ul>
         </div>
       </div>
     </div>
-    <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=5f71dd169010d641cf65485c" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-    <script src="https://assets.website-files.com/5f71dd169010d641cf65485c/js/webflow.6af2032ff.js" type="text/javascript"></script>
+    <script
+      src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=5f71dd169010d641cf65485c"
+      type="text/javascript"
+      integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://assets.website-files.com/5f71dd169010d641cf65485c/js/webflow.6af2032ff.js"
+      type="text/javascript"
+    ></script>
   </body>
 </html>
