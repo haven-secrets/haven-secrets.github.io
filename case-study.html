@@ -113,7 +113,7 @@
           <h2>2 Secrets</h2>
           <h3>2.1 What is a secret?</h3>
           <p>
-            A secret is something you want to keep secret. More specifically, in
+            A secret is something you want to keep <em>secret</em>. More specifically, in
             the context of software applications, it's a sensitive piece of data
             that “authenticates or authorizes you to a system”, as Armon Dadgar,
             co-founder of Hashicorp, defined it[1]. Some examples might help:
@@ -843,7 +843,7 @@
             application called 'BlueJay' that you want to integrate with Haven.
             As the Haven Admin, you are the only person who will be able to
             create/delete projects under this AWS account. After you run the
-            `haven createProject BlueJay`, Haven provisions a DynamoDB table and
+            <code>haven createProject BlueJay</code>, Haven provisions a DynamoDB table and
             set of IAM permission groups for your application BlueJay.
           </p>
 
@@ -959,8 +959,8 @@
           </p>
           <p>
             This server is now able to start interacting with Haven based on the
-            permissions you gave it. You can run your application with `haven
-            run`.
+            permissions you gave it. You can run your application with <code>haven
+            run</code>.
           </p>
           <p>
             #TODO! ADD haven-run-nodeblueJay.gif Switch out gif (it’s missing
@@ -1200,7 +1200,7 @@
             Admin adds a user, either in the UI or the CLI, then Haven downloads
             a file with temporary credentials and the Haven Admin sends this to
             the new user. Second, the new user places the Haven file in their
-            home directory and runs `haven userSetup`. Haven invokes a lambda
+            home directory and runs <code>haven userSetup</code>. Haven invokes a lambda
             using those temporary credentials, the lambda checks if they’re
             still valid, and if so, returns permanent credentials which Haven
             then puts into the user’s haven file. At this point, the new user
@@ -1267,7 +1267,7 @@
           </p>
           <p>
             When we surveyed existing solutions, we noticed that
-            <em>most</em> dedicated secrets managers either permit you to store
+            most dedicated secrets managers either permit you to store
             secrets in env vars if you want to (e.g. Vault), or just always put
             secrets into env vars (e.g. EnvKey). And outside of dedicated
             secrets managers, if you're using Docker's or Kubernetes's built-in
