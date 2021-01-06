@@ -126,7 +126,7 @@
             <li>private keys for TLS/SSL certificates</li>
             <li>SSH keys and certificates</li>
           </ul>
-          <p>#TODO! VISUAL-TBD-icons showing a few secrets types</p>
+          <p>#TODO! create visual: icons showing a few secrets types</p>
           <p>
             Each of these are secrets because they are in and of themselves some
             mechanism of access---one that you don't want falling into the wrong
@@ -206,7 +206,7 @@
             a vulnerability related to configuration secrets involving AWS S3
             buckets. The attacker previously worked as a developer for AWS and
             was able to exploit a misconfigured firewall to extract files in a
-            Capital One directory stored on AWS's servers. #TODO!: add ref
+            Capital One directory stored on AWS's servers. #TODO! add ref
           </p>
           <p>
             Secrets are the keys to the kingdom and as engineers it's our duty
@@ -262,7 +262,7 @@
             what they call "Config Vars".
           </p>
           <p>
-            #TODO! VISUAL-TBD-Heroku screenshot? if no visual here, combine next
+            #TODO! Add visual-Heroku screenshot. Or don't add a visual and combine next
             paragraph with previous
           </p>
           <p>
@@ -287,7 +287,7 @@
             reporting.
           </p>
           <p>
-            #TODO! VISUAL-TBD-if no visual here, then combine next paragraph with
+            #TODO! Add visual-TBD. Or don't add a visual, then combine next paragraph with
             previous
           </p>
           <p>
@@ -305,8 +305,7 @@
             key distributed?
           </p>
           <p>
-            #TODO! VISUAL-slide-67-altered caption: the master key is now itself
-            a secret
+            #TODO! Add visual of altered slide 67
           </p>
           <h4>
             Following the principle of least privilege isn't a complete solution
@@ -317,8 +316,7 @@
             Jerome Saltzer[6]
           </blockquote>
           <p>
-            #TODO! VISUAL-MAYBE-keep out / authorized personnel only
-            ‘sign’/image?
+            #TODO! Add visual, maybe an 'authorized personnel only' sign
           </p>
           <p>
             The principle of least privilege is crucial. It states that anyone
@@ -419,7 +417,7 @@
             some other communication channel, like email.
           </p>
           <p>
-            #TODO! VISUAL-MAYBE-icons of a person locking a file and sending in
+            #TODO! Add visual: icons of a person locking a file and sending in
             slack, plus speaking password (‘key’ icon) over phone
           </p>
           <p>
@@ -529,9 +527,7 @@
             below.
           </p>
           <p>
-            #TODO! VISUAL-slide-26-modified-to-be-a-gif (I think it used to
-            be--does Rebecca still have it?) Actually sounds like we use that
-            slideshow style thing
+            #TODO! Add new visual, a gif-ified slide 26. Look into the slideshow-style thing shared by cohort.
           </p>
           <p>
             First, you should encrypt client-side. This means secrets are
@@ -582,8 +578,7 @@
           </p>
           <h5>Secrets manager as decoupled, passive component</h5>
           <p>
-            #TODO! put text in columns or something alongside pictures. Add
-            picture(s) of ways to do secrets
+            #TODO!  Add visual showing these ways to do secrets. Or if no visual, maybe combine paragraphs.
           </p>
           <meta
             name="image"
@@ -634,7 +629,7 @@
             a child process, and injects the secrets into the environment of
             that process.
           </p>
-          <p>#TODO! visual TBD</p>
+          <p>#TODO! Add new visual-TBD</p>
           <p>
             This gives SecretHub some level of control---it can monitor the
             standard-out and standard-error streams of your application, which
@@ -758,7 +753,7 @@
             needs an AWS account, that’s it.
           </p>
           <h4>AWS services used</h4>
-          <p>#TODO! VISUAL NEW</p>
+          <p>#TODO! Add new visual</p>
           <h4>Encrypting and decrypting secrets</h4>
           <p>
             Secrets need to be encrypted and decrypted with an encryption key,
@@ -1247,7 +1242,7 @@
             application’s secrets aren't stored in a file somewhere on the
             application server (so no secret sprawl in that regard). Second, due
             to the nature of child processes, Haven can redact any secrets
-            leaking out on stdOut or stdErr (we explain how here [TODO: put
+            leaking out on stdOut or stdErr (we explain how here [#TODO!: put
             link]). Finally, this approach makes it easy for the developer: they
             can simply install the Haven package and change their application’s
             start command to include <code>haven run</code>.
