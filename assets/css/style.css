@@ -73,6 +73,13 @@ button::-moz-focus-inner {
   padding: 0
 }
 
+figure {
+  text-align: center;
+}
+figcaption {
+  text-align: center;
+}
+
 #sidebar {
   /* background: #fff; */
   width: 30%;
