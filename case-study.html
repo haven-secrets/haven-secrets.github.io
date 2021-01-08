@@ -99,6 +99,8 @@
           </p> -->
         </div>
         <div id="case-study">
+
+          <br />
           <h2 class="h2">1 Introduction</h2>
           <p>
             Your application has secrets, and if they get out, you’re not going
@@ -316,12 +318,6 @@
             with a password, sends the locked file over Slack and sends the
             password to Bob over some other communication channel, like email.
           </p>
-          <!-- TODO: ask team what they think of this -->
-          <img
-            width="300px"
-            style="margin: 20px"
-            src="./assets/images/case-study/secrets-shared-weird-ways.png"
-          />
           <p>
             This still doesn’t look great. Without a system in place, you have
             to get creative to share your secrets securely, and that makes them
@@ -687,10 +683,6 @@
             with the same AWS infrastructure, albeit with varying levels of
             permissions.
           </p>
-          <img
-            src="assets/images/case-study/architecture.png"
-            class="case-study-image large-image"
-          />
           <p>
             To showcase how Haven works, let’s walk through a common workflow,
             including how you set up Haven as an Admin, how you add a project to
@@ -711,10 +703,6 @@
             npm package, you run <code>haven setup</code>, which assigns you as
             a Haven Admin.
           </p>
-          <img
-            src="assets/images/case-study/admin-setup.png"
-            class="case-study-image large-image"
-          />
           <p>
             During setup, Haven connects to your AWS account and provisions the
             backend resources for creating projects and their environments,
@@ -723,6 +711,10 @@
             will ever be stored with Haven--there is no external Haven server
             with your secrets.
           </p>
+          <img
+            src="assets/images/case-study/admin-setup.png"
+            class="case-study-image large-image"
+          />
           <p>
             Haven provisions a file called havenAccountFile, which contains your
             Haven credentials. All you need to do is place this havenAccountFile
@@ -738,7 +730,6 @@
             DynamoDB table and set of IAM permission groups for your application
             BlueJay.
           </p>
-          <!-- TODO: umm, this image is the same as the one a few paragraphs above -->
           <img
             src="assets/images/case-study/admin-setup.png"
             class="case-study-image large-image"
@@ -970,7 +961,6 @@
           />
 
           <h4>Running the UI web application on localhost</h4>
-          <!-- TODO: maybe switch this image with a 'real' one of our UI, and maybe draw a box around the localhost part -->
           <img
             src="assets/images/ui.png"
             class="case-study-image large-image"
@@ -1198,7 +1188,6 @@
             >
           </p>
           <p>
-            <!-- TODO: figure out why this reference is indented (the others aren't) -->
             [2]
             <a
               href="https://www.ndss-symposium.org/wp-content/uploads/2019/02/ndss2019_04B-3_Meli_paper.pdf"
