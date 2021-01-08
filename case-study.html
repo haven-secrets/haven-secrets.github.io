@@ -120,7 +120,7 @@
             A secret is something you want to keep <em>secret</em>. More
             specifically, it's a sensitive piece of data that authenticates or
             authorizes you to a system, as Armon Dadgar, co-founder and CTO of
-            Hashicorp, defines it [?]. For example, you may have a connection
+            Hashicorp, defines it[1]. For example, you may have a connection
             string that you pass to a database so you can authenticate a session
             and request data from it. Or you may have an API token that you
             supply when you make a call to your cloud provider so you can read
@@ -155,9 +155,9 @@
           </h4>
           <p>
             In 2019, researchers at the North Carolina State University scanned
-            almost 13% of Github’s public repositories and found "not only is
+            almost 13% of Github’s public repositories and found[2] "not only is
             secret leakage pervasive–affecting over 100,000 repositories–but
-            that thousands of new, unique secrets are leaked every day."[?] They
+            that thousands of new, unique secrets are leaked every day." They
             noted it wasn't just inexperienced developers leaking secrets in
             hobby projects. Several large, prominent organizations were also
             leaking their secrets, including a popular website used by millions
@@ -180,7 +180,7 @@
             dangerous, because people make mistakes---over-privileging
             developers can lead to honest but costly mistakes. For example, in
             2017 DigitalOcean discovered that their "primary database had been
-            deleted" and as their web press release[?] stated: “The root cause
+            deleted" and as their web press release[3] stated: “The root cause
             of this incident was an engineer-driven configuration error. A
             process performing automated testing was misconfigured using
             production credentials.”
@@ -195,7 +195,7 @@
             to configuration secrets involving AWS S3 buckets. The attacker
             previously worked for AWS and was able to exploit a misconfigured
             firewall to extract files in a Capital One directory stored on AWS's
-            servers.[?] In fact, the misconfigured firewall had too many
+            servers [4]. In fact, the misconfigured firewall had too many
             permissions: it could list and read any file in any bucket of data
             when it shouldn't have been able to.
           </p>
@@ -228,11 +228,12 @@
           <p>
             The Twelve-Factor App methodology made popular the practice of
             storing configuration in environment variables to separate
-            configuration from code.[?] Since secrets are often discussed in the
-            context of configuration, it may feel natural to store your secrets
-            in environment variables if you do so with your configuration.
-            Environment variables aren’t <em>bad</em>, but it’s dangerous to
-            depend on them to carry the weight of managing your secrets.
+            configuration from code [5]. Since secrets are often discussed in
+            the context of configuration, it may feel natural to store your
+            secrets in environment variables if you do so with your
+            configuration. Environment variables aren’t <em>bad</em>, but it’s
+            dangerous to depend on them to carry the weight of managing your
+            secrets.
           </p>
 
           <h5>Sourcing env vars from files</h5>
@@ -510,10 +511,8 @@
             in. Another approach that works this way is what the secrets manager
             SecretHub does. SecretHub runs your application as a child process,
             and injects the secrets into the environment of that process. This
-            gives SecretHub some level of control---it can monitor the
-            standard-out and standard-error streams of your application and
-            redact secrets from them. This is the approach the Haven team ended
-            up taking.
+            gives SecretHub some level of control, as it can monitor the
+            standard-out and standard-error streams of your application.
           </p>
           <br />
 
@@ -526,10 +525,11 @@
             of your choice, as well as the identity provider of your choice, and
             can integrate with a broad array of plugins. But Vault is widely
             regarded as complex, and can be overkill for many teams. Their own
-            docs admit this, "Vault is a complex system that has many different
-            pieces."[?] It is probably the best choice if you need some of the
-            features that only Vault offers, and if your team or organization
-            has the expertise and bandwidth to manage the Vault beast.
+            docs admit this, stating[6] "Vault is a complex system that has many
+            different pieces." It is probably the best choice if you need some
+            of the features that only Vault offers, and if your team or
+            organization has the expertise and bandwidth to manage the Vault
+            beast.
           </p>
 
           <h4>Other commercial solutions</h4>
@@ -970,7 +970,7 @@
             web, which we thought best to avoid. The choice to run the
             Admin/Developer UI Dashboard locally was something we wanted to do
             from the beginning for this reason. We were inspired by EnvKey,
-            whose FAQ states:
+            whose FAQ states[7]:
           </p>
           <blockquote>
             Unfortunately, it's still not possible to implement true
@@ -1018,12 +1018,15 @@
             password’ before they can do anything else. We use an AWS Lambda
             function to enforce the one-hour limit. If someone doesn’t use their
             temporary credentials within an hour, the Haven Admin will need to
-            create a new user. The flow is illustrated below: first, the Haven
-            Admin adds a user, either in the UI or the CLI, then Haven downloads
-            a file with temporary credentials and the Haven Admin sends this to
-            the new user. Second, the new user places the Haven file in their
-            home directory and runs <code>haven userSetup</code>. Haven invokes
-            a lambda using those temporary credentials, the lambda checks if
+            create a new user.
+          </p>
+          <p>
+            The flow is illustrated below: first, the Haven Admin adds a user,
+            either in the UI or the CLI, then Haven downloads a file with
+            temporary credentials and the Haven Admin sends this to the new
+            user. Second, the new user places the Haven file in their home
+            directory and runs <code>haven userSetup</code>. Haven invokes a
+            lambda using those temporary credentials, the lambda checks if
             they’re still valid, and if so, returns permanent credentials which
             Haven then puts into the user’s haven file. At this point, the new
             user would need to tell the Haven Admin that they set up their
@@ -1060,7 +1063,7 @@
             using it, but in one way of using SecretHub with your application,
             SecretHub runs your application as a child process and injects the
             application’s secrets into that child process as environment
-            variables.
+            variables [8].
           </p>
           <p>
             Haven works the same way. This has three benefits. First, your
@@ -1078,7 +1081,7 @@
             There are pros and cons of using environment variables. A weakness
             of environment variables is the environment can get leaked or
             inherited: a logging or debugging tool may dump the environment, or
-            a malicious child process may inherit and read your secrets.[?] But
+            a malicious child process may inherit and read your secrets [9]. But
             env vars do have one major security advantage: they die when their
             process dies. Any environment variables you set for that application
             are <em>for that process</em>, and will disappear once your
@@ -1173,41 +1176,64 @@
           <br />
 
           <h2>7 References</h2>
-          <p>[1] <a href=""></a></p>
-          <p>[2] <a href=""></a></p>
-          <p>[3] <a href=""></a></p>
-          <p>[4] <a href=""></a></p>
-          <p>[5] <a href=""></a></p>
-          <p>[6] <a href=""></a></p>
-          <p>[7] <a href=""></a></p>
-          <p>[8] <a href=""></a></p>
-          <p>[9] <a href=""></a></p>
-          <p>[10] <a href=""></a></p>
-          <p>[11] <a href=""></a></p>
-
-          <a href="https://www.ibm.com/security/data-breach"
-            >https://www.ibm.com/security/data-breach</a
-          >
-          <a
-            href="https://www.ndss-symposium.org/wp-content/uploads/2019/02/ndss2019_04B-3_Meli_paper.pdf"
-            >https://www.ndss-symposium.org/wp-content/uploads/2019/02/ndss2019_04B-3_Meli_paper.pdf</a
-          >
-          <a
-            href="https://www.digitalocean.com/blog/update-on-the-april-5th-2017-outage/"
-            >https://www.digitalocean.com/blog/update-on-the-april-5th-2017-outage/</a
-          >
-          <a
-            href="https://en.wikipedia.org/wiki/Principle_of_least_privilege#cite_note-6"
-            >https://en.wikipedia.org/wiki/Principle_of_least_privilege#cite_note-6</a
-          >
-          <a
-            href="https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html#data-to-exclude"
-            >https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html#data-to-exclude</a
-          >
-          <a href="https://12factor.net/config">https://12factor.net/config</a>
-          <a href="https://www.vaultproject.io/docs/internals/architecture"
-            >https://www.vaultproject.io/docs/internals/architecture</a
-          >
+          <p>
+            [1]
+            <a
+              href="https://www.hashicorp.com/resources/introduction-vault-whiteboard-armon-dadgar"
+              >https://www.hashicorp.com/resources/introduction-vault-whiteboard-armon-dadgar</a
+            >
+          </p>
+          <p>
+            [2]
+            <a
+              href="https://www.ndss-symposium.org/wp-content/uploads/2019/02/ndss2019_04B-3_Meli_paper.pdf"
+              >https://www.ndss-symposium.org/wp-content/uploads/2019/02/ndss2019_04B-3_Meli_paper.pdf</a
+            >
+          </p>
+          <p>
+            [3]
+            <a
+              href="https://www.digitalocean.com/blog/update-on-the-april-5th-2017-outage/"
+              >https://www.digitalocean.com/blog/update-on-the-april-5th-2017-outage/</a
+            >
+          </p>
+          <p>
+            [4]
+            <a href="https://www.capitalone.com/facts2019/"
+              >https://www.capitalone.com/facts2019/</a
+            >
+          </p>
+          <p>
+            [5]
+            <a href="https://12factor.net/config"
+              >https://12factor.net/config</a
+            >
+          </p>
+          <p>
+            [6]
+            <a href="https://www.vaultproject.io/docs/internals/architecture"
+              >https://www.vaultproject.io/docs/internals/architecture</a
+            >
+          </p>
+          <p>
+            [7]
+            <a href="https://www.envkey.com/faq/"
+              >https://www.envkey.com/faq/</a
+            >
+          </p>
+          <p>
+            [8]
+            <a href="https://secrethub.io/docs/guides/environment-variables/"
+              >https://secrethub.io/docs/guides/environment-variables/</a
+            >
+          </p>
+          <p>
+            [9]
+            <a
+              href="https://www.honeybadger.io/blog/securing-environment-variables/"
+              >https://www.honeybadger.io/blog/securing-environment-variables/</a
+            >
+          </p>
           <br />
 
           <h2>8 Our Team</h2>
