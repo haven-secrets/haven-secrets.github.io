@@ -111,6 +111,7 @@
             challenges we encountered. But first, let’s start with an overview
             of secrets.
           </p>
+          <br />
 
           <h2>2 Secrets</h2>
 
@@ -145,6 +146,7 @@
             in dev, or prod? That’s a piece of configuration, but it doesn’t
             authenticate or authorize you in any way---so it’s not a secret.
           </p>
+          <br />
 
           <h3>2.2 So what?</h3>
 
@@ -197,6 +199,7 @@
             permissions: it could list and read any file in any bucket of data
             when it shouldn't have been able to.
           </p>
+          <br />
 
           <h3>2.3 Common practices</h3>
 
@@ -279,6 +282,7 @@
             reporting, so the secrets stored within them can easily end up in
             logs.
           </p>
+          <br />
 
           <h3>2.4 Secrets in teams</h3>
 
@@ -376,6 +380,7 @@
             Eventually, you’ll find yourself with a big headache called secret
             sprawl.
           </p>
+          <br />
 
           <h3>2.5 The problem of Secret Sprawl</h3>
           <p>
@@ -413,6 +418,8 @@
               If you need to change a secret, where do you have to change it?
             </li>
           </ul>
+          <br />
+          <br />
 
           <h2>3 Secrets Managers</h2>
 
@@ -446,6 +453,7 @@
             service needs secrets will get only the secrets they need. You
             thereby reduce the attack surface area of your application.
           </p>
+          <br />
 
           <h3>3.2 Encryption</h3>
           <p>
@@ -507,6 +515,7 @@
             redact secrets from them. This is the approach the Haven team ended
             up taking.
           </p>
+          <br />
 
           <h3>3.4 Existing solutions</h3>
 
@@ -593,6 +602,7 @@
             they either have a lot of overhead or are built for a niche use
             case.
           </p>
+          <br />
 
           <h3>3.5 A new solution</h3>
           <p>
@@ -654,6 +664,7 @@
             to productively use Haven. The Haven Admin needs an AWS
             account---that’s it.
           </p>
+          <br />
 
           <h3>4.1 How does Haven work?</h3>
           <p>
@@ -810,6 +821,7 @@
             <code>haven run</code>.
           </p>
           <img src="assets/images/cli.gif" class="case-study-image" />
+          <br />
 
           <h2>5 Building Haven</h2>
           <p>
@@ -826,6 +838,7 @@
               <strong>get secrets</strong>?
             </li>
           </ul>
+          <br />
 
           <h3>5.1 Keeping your secrets safe</h3>
 
@@ -972,6 +985,7 @@
             Haven does not have a backend “Haven” server, so we could not snoop
             on your secrets even if we wanted to.
           </p>
+          <br />
 
           <h3>5.2 Sharing access safely</h3>
 
@@ -1030,6 +1044,7 @@
             a red flag next to the secret, indicating they should rotate
             (change) that secret.
           </p>
+          <br />
 
           <h3>5.3 Getting secrets to your applications</h3>
           <p>
@@ -1140,6 +1155,7 @@
             src="assets/images/case-study/haven-child-process.png"
             class="case-study-image large-image"
           />
+          <br />
 
           <h2>6 Future Work</h2>
           <p>We'd like to extend our work to include:</p>
@@ -1154,6 +1170,7 @@
               secrets
             </li>
           </ul>
+          <br />
 
           <h2>7 References</h2>
           <p>[1] <a href=""></a></p>
@@ -1191,6 +1208,7 @@
           <a href="https://www.vaultproject.io/docs/internals/architecture"
             >https://www.vaultproject.io/docs/internals/architecture</a
           >
+          <br />
 
           <h2>8 Our Team</h2>
           <div class="section team-section">
