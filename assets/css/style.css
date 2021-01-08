@@ -84,7 +84,7 @@ figcaption {
   /* background: #fff; */
   width: 30%;
   float: left;
-  transform: translateY(25%);
+  transform: translateY(42.5%);
   box-sizing: border-box;
   padding: 20px 40px;
   position: fixed;
@@ -102,21 +102,21 @@ figcaption {
   margin: 20px 0;
 }
 
-#sidebar ul li a {
+/*#sidebar ul li a {
   font-weight: bold;
 }
-
+*/
 #sidebar ul a {
+  color: #b5bbbf;
   text-decoration: none;
+}
+
+#sidebar ul a:hover {
+  color: #00F2B1;
 }
 
 #sidebar ul ul {
   padding-left: 15px;
-}
-
-#sidebar ul ul li a {
-  color: #3498db;
-  font-weight: normal;
 }
 
 @font-face {
