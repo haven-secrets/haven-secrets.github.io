@@ -105,13 +105,11 @@
           <h2 class="h2">1 Introduction</h2>
           <br>
           <p>
-            Your application has secrets, and if they get out, you’re not going
-            to have a good time. Handling your secrets is something you need to
-            get the right first time.
+            Your application has secrets. If those secrets leak, you may have to urgently update them and redeploy applications. Leaked secrets can cost you in man-hours, in reputation, and in revenue.
           </p>
           <br>
           <p>
-            Haven abstracts away the complexity of secrets management for
+            Haven is an open-source solution for easily and securely managing your application secrets. Haven abstracts away the complexity of secrets management for
             software engineers, so they can have the peace of mind to focus on
             their most important work. In this case study, we describe how we
             designed and built Haven, along with some of the technical
@@ -126,12 +124,11 @@
           <p>
             A secret is something you want to keep <em>secret</em>. More
             specifically, it's a sensitive piece of data that authenticates or
-            authorizes you to a system. [1] For example, you may have a connection
+            authorizes you to a system. [1] For example, a connection
             string that you pass to a database so you can authenticate a session
-            and request data from it. Or you may have an API token that you
+            and request data from it. Or an API token that you
             supply when you make a call to your cloud provider so you can read
-            and write from its storage. Both are in and of themselves some
-            mechanism of access, and you don't want them falling into the wrong
+            and write from its storage. Both of these pieces of information provide access to sensitive data, so you don't want them falling into the wrong
             hands.
           </p>
           <br>
@@ -507,20 +504,31 @@
             And that’s done in one of two ways: either your application has to
             fetch the secrets it needs--so you have to write more application
             code--<em>or</em> your application is run in a certain context such
-            that it already has the secrets it needs. A secrets manager might
-            require you to make an API call within your code to fetch secrets
-            from it, in which case it’s more of a decoupled and passive
-            component. On the other hand, your application might also be run
-            with the secrets it needs already available. For example, if you use
-            an orchestration service, such as Puppet, or Docker Swarm, there
-            will likely be a built-in way of specifying secrets, which will then
-            be made available in the environment your application code executes
-            in. Another approach that works this way is what the secrets manager
-            SecretHub does. SecretHub runs your application as a child process,
-            and injects the secrets into the environment of that process. This
-            gives SecretHub some level of control, as it can monitor the
-            standard-out and standard-error streams of your application.
+            that it already has the secrets it needs.
           </p>
+          <ol>
+          	<li>
+	          	A secrets manager might
+	            require you to make an API call within your code to fetch secrets
+	            from it, in which case it’s more of a decoupled and passive
+	            component.
+          	</li>
+          	<li>
+          		On the other hand, your application might also be run
+	            with the secrets it needs already available. For example, if you use
+	            an orchestration service, such as Puppet, or Docker Swarm, there
+	            will likely be a built-in way of specifying secrets, which will then
+	            be made available in the environment your application code executes
+	            in.
+          	</li>
+          	<p>
+          		Another approach that works the second way is what the secrets manager
+	            SecretHub does. SecretHub runs your application as a child process,
+	            and injects the secrets into the environment of that process. This
+	            gives SecretHub some level of control, as it can monitor the
+	            standard-out and standard-error streams of your application.
+          	</p>
+          </ol>
           <br />
 
           <h3>3.4 Existing solutions</h3>
@@ -542,19 +550,21 @@
           <h4>Other commercial solutions</h4>
           <p>
             Although Vault is dominant, there are other players on the market.
-            Doppler is an early YC startup that launched in late 2020 whose
+          </p>
+          <ul>
+            <li>Doppler is an early YC startup that launched in late 2020 whose
             focus is making it "super easy" to manage secrets. One thing that
-            may give users pause is that secrets are sent plaintext to Doppler.
-            EnvKey has a different security model--it takes a "zero trust"
+            may give users pause is that secrets are sent plaintext to Doppler.</li>
+            <li>EnvKey has a different security model--it takes a "zero trust"
             approach and encrypts secrets client-side before they are sent over
             the network. Like Doppler, EnvKey is easy to get started with, but
             it is not as feature-rich: for example, it lacks secret versioning
-            and the ability to segregate permissions on a per-project basis.
-            SecretHub also does client-side encryption, and is feature-rich, but
+            and the ability to segregate permissions on a per-project basis.</li>
+            <li>SecretHub also does client-side encryption, and is feature-rich, but
             complex. SecretHub also redacts secrets from stdout and stderr,
             which helps to prevent secrets being visible in logs locally and/or
-            in any logs that might be shipped off to third parties.
-          </p>
+            in any logs that might be shipped off to third parties.</li>
+          </ul>
           <p>
             Ultimately, all commercial solutions are third parties that you have
             to trust. Many teams prefer using open-source software for a variety
@@ -631,8 +641,7 @@
           </p>
           <br>
           <p>
-            After we did our research on what makes for a good secrets manager
-            and identified the components we’d need to build one, we realized
+            After we identified the components we’d need to build a good secrets manager, we realized
             AWS had trusted and long-standing services for some crucial
             components.
           </p>
@@ -975,15 +984,11 @@
           <br>
           <h4>Running the UI web application on localhost</h4>
           <img
-            src="assets/images/ui.png"
+            src="assets/images/case-study/localhost-ui.png"
             class="case-study-image large-image"
           />
           <p>
-            A secrets manager instantiated as a web application faces the same
-            security issues as any other application you run over the public
-            web, which we thought best to avoid. The choice to run the
-            Admin/Developer UI Dashboard locally was something we wanted to do
-            from the beginning for this reason. We were inspired by EnvKey,
+            The choice to run the Admin/Developer UI Dashboard from localhost was something we wanted to do from the beginning, in order to avoid the security issues that any application running on the public web faces. [7] We were inspired by EnvKey,
             whose FAQ states:
           </p>
           <blockquote>
@@ -992,7 +997,7 @@
             fundamental chicken-and-egg problem when it comes to server trust,
             there's no way to protect against all those ever-so-convenient
             browser extensions that so many folks have given full-page
-            permissions. [7]
+            permissions. [8]
           </blockquote>
           <p>
             A second reason we run the UI app locally is to make it clear that
@@ -1080,7 +1085,7 @@
             using it, but in one way of using SecretHub with your application,
             SecretHub runs your application as a child process and injects the
             application’s secrets into that child process as environment
-            variables. [8]
+            variables. [9]
           </p>
           <br>
           <p>
@@ -1099,7 +1104,7 @@
             There are pros and cons of using environment variables. A weakness
             of environment variables is the environment can get leaked or
             inherited: a logging or debugging tool may dump the environment, or
-            a malicious child process may inherit and read your secrets. [9] But
+            a malicious child process may inherit and read your secrets. [10] But
             env vars do have one major security advantage: they die when their
             process dies. Any environment variables you set for that application
             are <em>for that process</em>, and will disappear once your
@@ -1116,9 +1121,7 @@
             secrets into env vars (e.g. EnvKey). And outside of dedicated
             secrets managers, if you're using Docker's or Kubernetes's built-in
             ways of handling secrets, you'll be setting them as env vars.
-            Whether you use environment variables or not is only a small part of
-            the overall security picture---centralization and encryption are
-            arguably far more important. We decided to use environment
+            Since centralization and encryption are arguably far more important for security than whether you use environment variables, and since using them is standard, we decided to use environment
             variables.
           </p>
           <br>
@@ -1177,18 +1180,13 @@
           <br>
           <h2>6 Future Work</h2>
           <br>
-          <p>We'd like to extend our work to include:</p>
-          <ul>
-            <li>Ability to bulk-add secrets</li>
-            <li>Email integrations</li>
-            <li>
-              Option for per-secret access controls rather than per-project
-            </li>
-            <li>
-              Direct plug-ins/integrations with credential providers for dynamic
-              secrets
-            </li>
-          </ul>
+          <p>
+            And that's Haven! We're an open-source secrets manager for small teams, with a command line tool as well as a frontend for easy team management. For our next steps, we may add the ability for users to bulk-add secrets from JSON and YAML files. We may also add an email integration to make new-user creation even smoother.
+          </p>
+          <p>
+            As possible stretch goals, we may support the option for per-secret access controls (rather than per-project access controls), and we may also provide direct plug-ins and integrations with select credential providers to support dynamic secrets (that is, one-time use credentials).
+          </p>
+          <p>
           <br>
           <br>
           <h2>7 References</h2>
@@ -1227,17 +1225,22 @@
             >
           </p>
           <p class="footnote">
-            [7] <a href="https://www.envkey.com/faq/" class="footnote"
+            [6] <a href="https://en.wikipedia.org/wiki/Web_application_security#Security_threats" class="footnote"
+              >https://en.wikipedia.org/wiki/Web_application_security#Security_threats</a
+            >
+          </p>
+          <p class="footnote">
+            [8] <a href="https://www.envkey.com/faq/" class="footnote"
               >https://www.envkey.com/faq/</a
             >
           </p>
           <p class="footnote">
-            [8] <a href="https://secrethub.io/docs/guides/environment-variables/" class="footnote"
+            [9] <a href="https://secrethub.io/docs/guides/environment-variables/" class="footnote"
               >https://secrethub.io/docs/guides/environment-variables/</a
             >
           </p>
           <p class="footnote">
-            [9] <a
+            [10] <a
               href="https://www.honeybadger.io/blog/securing-environment-variables/" class="footnote"
               >https://www.honeybadger.io/blog/securing-environment-variables/</a
             >
@@ -1433,7 +1436,6 @@
             </div>
           </div>
         </div>
-      </div>
     </article>
     <script
       src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=5f71dd169010d641cf65485c"
