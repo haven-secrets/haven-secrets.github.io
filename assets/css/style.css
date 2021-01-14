@@ -107,12 +107,12 @@ figcaption {
 }
 */
 #sidebar ul a {
-  color: #b5bbbf;
+  color: #696e70;
   text-decoration: none;
 }
 
 #sidebar ul a:hover {
-  color: #00F2B1;
+  color: #00f2b1;
 }
 
 #sidebar ul ul {
@@ -686,7 +686,7 @@ ul.team-member-icons li {
 body {
   background-color: #fff;
   font-family: Inter, sans-serif;
-  color: #b5bbbf;
+  color: #696e70;
   /*  font-size: 14px;*/
   line-height: 20px;
 }
@@ -908,7 +908,7 @@ a:hover {
 }
 
 .white-paragraph {
-  color: #b5bbbf;
+  color: #696e70;
   font-weight: 400;
   text-align: justify;
 }
@@ -1055,7 +1055,7 @@ a:hover {
   align-items: center;
   border-style: solid;
   border-width: 2px;
-  border-color: #b5bbbf;
+  border-color: #696e70;
   border-radius: 100%;
   background-color: transparent;
 }
@@ -1101,7 +1101,7 @@ a:hover {
 .tab-link-text {
   position: absolute;
   bottom: -40px;
-  color: #b5bbbf;
+  color: #696e70;
   text-align: center;
   white-space: nowrap;
 }
@@ -1280,7 +1280,7 @@ a:hover {
 ._404-text {
   max-width: 675px;
   margin-bottom: 40px;
-  color: #b5bbbf;
+  color: #696e70;
   font-size: 20px;
   line-height: 1.65;
   text-align: center;
@@ -1312,7 +1312,7 @@ a:hover {
   padding: 20px 12px;
   -webkit-transition: color 0.3s ease;
   transition: color 0.3s ease;
-  color: #b5bbbf;
+  color: #696e70;
   font-size: 15px;
   font-weight: 500;
   text-decoration: none;
@@ -1445,7 +1445,7 @@ a:hover {
 }
 
 .text {
-  color: #b5bbbf;
+  color: #696e70;
   font-size: 18px;
   line-height: 1.8;
 }
