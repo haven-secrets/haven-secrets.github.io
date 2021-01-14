@@ -126,8 +126,7 @@
           <p>
             A secret is something you want to keep <em>secret</em>. More
             specifically, it's a sensitive piece of data that authenticates or
-            authorizes you to a system, as Armon Dadgar, co-founder and CTO of
-            Hashicorp, defines it. [1] For example, you may have a connection
+            authorizes you to a system. [1] For example, you may have a connection
             string that you pass to a database so you can authenticate a session
             and request data from it. Or you may have an API token that you
             supply when you make a call to your cloud provider so you can read
@@ -139,7 +138,7 @@
           <h4>Secrets vs. sensitive information</h4>
           <p>
             You probably have other sensitive information you’d like to keep
-            secret too, like credit card or protected health information. But
+            secret too, like PII (personally identifiable information). But
             they’re not secrets if they don’t directly grant you access to a
             system. While any sensitive information should be stored securely,
             the scope of our discussion here is limited to application secrets.
@@ -171,7 +170,7 @@
             of college applicants in the US and a major government agency in
             Europe. In both cases, they exposed their respective AWS
             credentials.
-            <a href="https://github.com/search?q=removed+aws+key&type=Commits"
+            <a target="_blank" href="https://github.com/search?q=removed+aws+key&type=Commits"
               >See for yourself</a
             >
             how common it is.
@@ -202,9 +201,7 @@
             to configuration secrets involving AWS S3 buckets. The attacker
             previously worked for AWS and was able to exploit a misconfigured
             firewall to extract files in a Capital One directory stored on AWS's
-            servers. [4] In fact, the misconfigured firewall had too many
-            permissions: it could list and read any file in any bucket of data
-            when it shouldn't have been able to.
+            servers. [4]
           </p>
           <br />
 
@@ -649,8 +646,7 @@
                 >Wikipedia</a
               >), we opted to use the highly-vetted AWS Key Management Service
               (AWS KMS). This is the only AWS service Haven uses that does not
-              have a free tier. KMS costs $1 per month per key, so if you use
-              Haven you can expect to pay a dollar a month to AWS.
+              have a free tier: KMS costs $1 per month per key.
             </li>
             <br>
             <li>
@@ -669,8 +665,7 @@
               from. Haven sits in the critical path of your application being
               served, so low latency and high availability were important. (On
               the other hand, scalability was not a concern for us.) We chose
-              Amazon DynamoDB, because it's a sane default that fits our needs,
-              has good documentation, high availability, and
+              Amazon DynamoDB, because it has good documentation, high availability, and
               single-digit-milliseconds latency.
             </li>
           </ol>
@@ -1137,11 +1132,7 @@
           <h5>Spawning a child process</h5>
           <p>
             A process can simply be thought of as a running program. When you
-            run your application, it runs in a process. Many programming
-            language’s runtime environments allow for the creation of
-            subprocesses, known as child processes. Node.js is one such runtime,
-            and Haven uses the spawn method from the 'child_process' library
-            built into Node. When using the spawn method, you specify the
+            run your application, it runs in a process. The Node.js runtime allows spinning out sub-processes called "child" processes, and Haven uses the spawn method from Node's built-in <code>child_process</code> library. When using the spawn method, you specify the
             program you want to run and that program is run as a child process.
             The stdIO of the child process is piped to and from the parent
             process: stdIn is piped in to the child from the parent, and stdOut
@@ -1443,7 +1434,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </article>
     <script
       src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=5f71dd169010d641cf65485c"
       type="text/javascript"
