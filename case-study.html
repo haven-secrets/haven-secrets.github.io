@@ -57,7 +57,7 @@
             <a
               href="/"
               aria-current="page"
-              class="brand w-nav-brand w--current"
+              class="brand w-nav-brand w—current"
               aria-label="home"
             >
               <img
@@ -94,9 +94,6 @@
       <article class="container case-study-container">
         <div class="hero-text-container">
           <h1 class="h1 centered">Case Study</h1>
-          <!-- <p class="intro-paragraph white-paragraph centered bottom-margin">
-            Why and how we built a secrets management solution
-          </p> -->
         </div>
         <div id="case-study">
 
@@ -180,7 +177,7 @@
             need to do their work. At the same time, if you’re on a small team,
             and you know everyone personally and trust their intentions, it’s
             tempting not to follow this principle. But sharing secrets freely is
-            dangerous, because people make mistakes---over-privileging
+            dangerous, because people make mistakes—over-privileging
             developers can lead to honest but costly mistakes. For example, in
             2017 DigitalOcean discovered that their "primary database had been
             deleted" and as their web press release stated: “The root cause
@@ -237,7 +234,7 @@
             secrets.
           </p>
           <br>
-          <h5>Sourcing env vars from files</h5>
+          <h5>Sourcing environment variables from files</h5>
           <p>
             Environment variables are often set from files. For example, in
             Node.js development, they’re set in a <code>.env</code> file and
@@ -256,7 +253,7 @@
             This has the advantage that you simply need to use a different
             <code>.env</code>
             file for production versus development environments. But if you
-            populate env vars from files, you must ensure those files don’t get
+            populate environment variables from files, you must ensure those files don’t get
             accidentally checked into a public repository or otherwise leaked.
             Plus, there's a glaring unanswered question: how are those
             <code>.env</code> files distributed, and is that done securely?
@@ -309,7 +306,7 @@
           <p>
             Maybe our hypothetical team tries to share secrets securely. Maybe
             Alice decides to take a <em>screenshot</em> of a secret and send
-            that to Bob in Slack--and maybe she even goes back into Slack and
+            that to Bob in Slack—and maybe she even goes back into Slack and
             deletes that screenshot once the recipient has got the secret. Or
             alternatively, maybe she puts that secret in a file and locks it
             with a password, sends the locked file over Slack and sends the
@@ -428,7 +425,7 @@
           <h3>3.1 Centralization</h3>
           <p>
             To prevent secret sprawl, you must have a single source of
-            truth---one place where all your secrets live. Establishing this
+            truth—one place where all your secrets live. Establishing this
             "single source of truth" is <em>centralization</em>. Centralization
             tames secret sprawl, and paves the way to gaining visibility and
             control around your secrets.
@@ -494,7 +491,7 @@
             <strong>share access</strong> safely? Third, you need to know how to
             actually use it in your applications. How do
             <strong>applications</strong> actually <strong>get secrets</strong>?
-            You might have to significantly adjust your workflow, depending on
+            You might have to significantly adjust your workflow depending on
             the solution you pick.
           </p>
           <br>
@@ -502,8 +499,8 @@
           <p>
             Let’s zoom in on that last question: how applications get secrets.
             And that’s done in one of two ways: either your application has to
-            fetch the secrets it needs--so you have to write more application
-            code--<em>or</em> your application is run in a certain context such
+            fetch the secrets it needs—so you have to write more application
+            code—<em>or</em> your application is run in a certain context such
             that it already has the secrets it needs.
           </p>
           <ol>
@@ -516,7 +513,7 @@
           	<li>
           		On the other hand, your application might also be run
 	            with the secrets it needs already available. For example, if you use
-	            an orchestration service, such as Puppet, or Docker Swarm, there
+	            an orchestration service, such as Puppet or Docker Swarm, there
 	            will likely be a built-in way of specifying secrets, which will then
 	            be made available in the environment your application code executes
 	            in.
@@ -524,10 +521,10 @@
           </ol>
         	<p>
         		Another approach that works the second way is what the secrets manager
-            SecretHub does. SecretHub runs your application as a child process,
+            SecretHub does. SecretHub runs your application as a child process
             and injects the secrets into the environment of that process. This
             gives SecretHub some level of control, as it can monitor the
-            standard-out and standard-error streams of your application.
+            standard output and standard error streams of your application.
         	</p>
           <br />
 
@@ -536,9 +533,9 @@
           <h4>Vault by Hashicorp</h4>
           <p>
             Vault is the most popular commercial solution. It's highly flexible
-            and extensible; for example, it integrates with the storage backend
-            of your choice, as well as the identity provider of your choice, and
-            can integrate with a broad array of plugins. But Vault is widely
+            and extensible. For example, it integrates with the storage backend
+            and identity provider of your choice, and it can integrate with a broad array of plugins.
+            But Vault is widely
             regarded as complex, and can be overkill for many teams. Their own
             docs admit this, stating "Vault is a complex system that has many
             different pieces." [6] It is probably the best choice if you need some
@@ -555,13 +552,13 @@
             <li>Doppler is an early YC startup that launched in late 2020 whose
             focus is making it "super easy" to manage secrets. One thing that
             may give users pause is that secrets are sent plaintext to Doppler.</li>
-            <li>EnvKey has a different security model--it takes a "zero trust"
+            <li>EnvKey has a different security model—it takes a "zero trust"
             approach and encrypts secrets client-side before they are sent over
             the network. Like Doppler, EnvKey is easy to get started with, but
             it is not as feature-rich: for example, it lacks secret versioning
             and the ability to segregate permissions on a per-project basis.</li>
-            <li>SecretHub also does client-side encryption, and is feature-rich, but
-            complex. SecretHub also redacts secrets from stdout and stderr,
+            <li>SecretHub has client-side encryption and is feature-rich, but
+            it is complex. SecretHub also redacts secrets from standard output and standard error,
             which helps to prevent secrets being visible in logs locally and/or
             in any logs that might be shipped off to third parties.</li>
           </ul>
@@ -577,21 +574,20 @@
             There are open-source solutions out there, ranging from utility-like
             tools that tend to require you do a lot to get up and running, to
             more complete solutions with UIs and built-in access control. The
-            latter, though, tend to be targeted toward specific use cases---for
-            example, Confidant, which was developed by Lyft in 2015. It has a
+            latter, though, tend to be targeted toward specific use cases. For
+            example, Confidant, which was developed by Lyft in 2015, has a
             nice UI and intuitive access control, but it is Docker-centric and
-            AWS-centric; it assumes you are using Docker, and also assumes you
-            already use AWS roles for authorization. An example of a more
-            utility-like tool is credstash which, like Confidant, uses AWS under
-            the hood. But it has limited functionality, e.g. no logs and no
-            ability to segregate secrets by project and environment, and it also
-            requires a fair bit of setup, e.g. you need to have an AWS KMS key
+            AWS-centric; it assumes you are using Docker and AWS roles for authorization. An example of a more
+            utility-like tool is credstash, which, like Confidant, uses AWS under
+            the hood. But it has limited functionality. For example, it doesn't offer logs or the
+            ability to segregate secrets by project and environment. It also
+            requires a fair bit of setup. For example, you need to have an AWS KMS key
             and your developers all need AWS credentials.
           </p>
           <br>
           <h4>AWS Secrets Manager</h4>
           <p>
-            AWS Secrets Manager came out in 2018 and if you're AWS-native it may
+            AWS Secrets Manager came out in 2018, and if you're AWS-native, it may
             be perfect for your team. However, if your team doesn't already use
             AWS services, it's not exactly a plug-and-play solution. Navigating
             the AWS ecosystem presents a steep learning curve in itself, and
@@ -612,9 +608,9 @@
           />
           <p>
             Even in the lightweight category, there’s some diversity. For
-            example Doppler emphasizes usability, while arguably EnvKey
-            emphasizes security more. The heavyweight ones, such as SecretHub
-            and Vault, tend to offer more features, but at the cost of greater
+            example Doppler emphasizes usability, while EnvKey
+            emphasizes security. The heavyweight ones, such as SecretHub
+            and Vault, tend to offer more features but at the cost of greater
             complexity. There are also several other open-source solutions, but
             they either have a lot of overhead or are built for a niche use
             case.
@@ -649,12 +645,12 @@
           <ol>
             <li>
               Since secrets need to be encrypted and decrypted with an
-              encryption key, and "successful key management is critical to the
+              encryption key and "successful key management is critical to the
               security of a cryptosystem" (<a
                 href="https://en.wikipedia.org/wiki/Key_management"
                 >Wikipedia</a
-              >), we opted to use the highly-vetted AWS Key Management Service
-              (AWS KMS). This is the only AWS service Haven uses that does not
+              >), we opted to use the highly vetted AWS Key Management Service
+              (KMS). This is the only AWS service Haven uses that does not
               have a free tier: KMS costs $1 per month per key.
             </li>
             <br>
@@ -674,7 +670,7 @@
               from. Haven sits in the critical path of your application being
               served, so low latency and high availability were important. (On
               the other hand, scalability was not a concern for us.) We chose
-              Amazon DynamoDB, because it has good documentation, high availability, and
+              Amazon DynamoDB because it has good documentation, high availability, and
               single-digit-milliseconds latency.
             </li>
           </ol>
@@ -682,7 +678,7 @@
           <p>
             Although we use AWS under the hood, you don't need cloud expertise
             to productively use Haven. The Haven Admin needs an AWS
-            account---that’s it.
+            account—that’s it.
           </p>
           <br />
 
@@ -690,8 +686,8 @@
           <p>
             The architecture of a Haven instance can be split up into two
             components: the client side and the corresponding AWS infrastructure
-            side. On the client side, each user--be it a Haven Admin, a
-            developer or an application server--uses the Haven application to
+            side. On the client side, each user—be it a Haven Admin, a
+            developer or an application server—uses the Haven application to
             interact with the instance’s secrets. All of these users have Haven
             installed on their personal machines and are using Haven to interact
             with the same AWS infrastructure, albeit with varying levels of
@@ -710,7 +706,7 @@
           <h4>Setting up Haven</h4>
           <p>
             The Haven Admin is the person responsible for creating every project
-            and every user, assigning permissions to said users, and reviewing
+            and every user, assigning permissions to the users, and reviewing
             access logs.
           </p>
           <br>
@@ -727,7 +723,7 @@
             backend resources for creating projects and their environments,
             adding users, setting permissions, and adding and updating secrets.
             Note that your AWS account is the <em>only</em> place your secrets
-            will ever be stored with Haven--there is no external Haven server
+            will ever be stored with Haven—there is no external Haven server
             with your secrets.
           </p>
           <img
@@ -870,7 +866,7 @@
             The very notion of encrypting your secrets has an inherent problem:
             what do you do with the encryption key? Assume you use symmetric
             encryption, so the encryption key both encrypts and decrypts your
-            secrets. But then that encryption key is itself a secret---and a
+            secrets. But then that encryption key is itself a secret—and a
             particularly sensitive one, since it can unlock all of your secrets.
             You might try to encrypt that key with another key, but that would
             be yet another key that you have to encrypt.
@@ -913,8 +909,8 @@
             Key wrapping has two advantages: first, it’s harder to brute force
             the encrypted data since each is encrypted using a different key;
             second, you reduce the attack surface area, because the master key
-            never sees your plaintext data--only plaintext data encryption
-            keys--so an attacker would need access to both your secrets storage
+            never sees your plaintext data—only plaintext data encryption
+            keys—so an attacker would need access to both your secrets storage
             and the master key (and in addition, there’s one less instance of
             your plaintext secrets traveling along the wire). You may be
             wondering what you do with these encrypted data encryption keys: you
@@ -925,7 +921,7 @@
           <h4>Implementing encryption best practices</h4>
           <p>
             It's a common saying in software that you shouldn't "roll your own
-            crypto"---you should use a vetted cryptographic library. We use the
+            crypto"—you should use a vetted cryptographic library. We use the
             AWS Encryption SDK, a client-side encryption library, because it
             adheres to cryptography best practices like key wrapping. The AWS
             Encryption SDK requires a master key, so Haven uses the master key
@@ -933,11 +929,11 @@
           </p>
           <br>
           <p>
-            When you add or update a secret, it's first encrypted on the client
-            using the SDK and then sent encrypted in transit via TLS to be
-            stored on Amazon DynamoDB, where it is encrypted at rest. Thus Haven
+            Haven
             follows the best practices of encrypting your secrets client-side,
-            in transit, and at rest.
+            in transit, and at rest. When you add or update a secret, it's first encrypted on the client
+            using the SDK and then sent encrypted in transit via TLS to be
+            stored on Amazon DynamoDB, where it is encrypted at rest.
           </p>
           <br>
           <h4>Our encryption scheme as a whole</h4>
@@ -988,7 +984,7 @@
             class="case-study-image large-image"
           />
           <p>
-            The choice to run the Admin/Developer UI Dashboard from localhost was something we wanted to do from the beginning, in order to avoid the security issues that any application running on the public web faces. [7] We were inspired by EnvKey,
+            We chose to run the Admin/Developer UI Dashboard from localhost in order to avoid the security issues that any application running on the public web faces. [7] We were inspired by EnvKey,
             whose FAQ states:
           </p>
           <blockquote>
@@ -1025,10 +1021,10 @@
           <br>
           <h4>Mitigating the "initial credentials" problem</h4>
           <p>
-            Creating credentials for a new haven user means creating a new
+            Creating credentials for a new Haven user means creating a new
             <em>secret</em>. After all, those Haven credentials may permit the
-            ability to read and write secrets! So how could we ensure that we
-            didn't cause our <em>own</em> secret sprawl?
+            ability to read and write secrets! So, how can we ensure that we
+            don't cause our <em>own</em> secret sprawl?
           </p>
           <br>
           <h5>Temporary credentials</h5>
@@ -1093,7 +1089,7 @@
             application’s secrets aren't stored in a file somewhere on the
             application server (so no secret sprawl in that regard). Second, due
             to the nature of child processes, Haven can redact any secrets
-            leaking out on stdOut or stdErr (we explain how shortly). Finally,
+            leaking out on standard output or standard error (we explain how shortly). Finally,
             this approach makes it easy for the developer: they can simply
             install the Haven package and change their application’s start
             command to include <code>haven run</code>.
@@ -1105,27 +1101,26 @@
             of environment variables is the environment can get leaked or
             inherited: a logging or debugging tool may dump the environment, or
             a malicious child process may inherit and read your secrets. [10] But
-            env vars do have one major security advantage: they die when their
+            environment variables do have one major security advantage: they die when their
             process dies. Any environment variables you set for that application
-            are <em>for that process</em>, and will disappear once your
-            application stops running---leaving no trace behind, quite unlike a
-            file. Besides the security advantage, env vars also have two major
-            pragmatic advantages: 1) they’re language agnostic, and effectively
-            OS agnostic as well, and 2) many developers are familiar with them.
+            are <em>for that process</em> and will disappear once your
+            application stops running—leaving no trace behind, unlike a
+            file. Besides the security advantage, environment variables also have two major
+            pragmatic advantages: 1) they’re language and OS agnostic, and 2) many developers are familiar with them.
           </p>
           <br>
           <p>
             When we surveyed existing solutions, we noticed that
-            <em>most</em> dedicated secrets managers either permit you to store
-            secrets in env vars if you want to (e.g. Vault), or just always put
-            secrets into env vars (e.g. EnvKey). And outside of dedicated
+            most dedicated secrets managers either permit you to store
+            secrets in environment variables if you want to (e.g. Vault) or just always put
+            secrets into environment variables (e.g. EnvKey). And outside of dedicated
             secrets managers, if you're using Docker's or Kubernetes's built-in
-            ways of handling secrets, you'll be setting them as env vars.
+            ways of handling secrets, you'll be setting them as environment variables.
             Since centralization and encryption are arguably far more important for security than whether you use environment variables, and since using them is standard, we decided to use environment
             variables.
           </p>
           <br>
-          <h4>Redacting secrets from an application's stdout and stderr</h4>
+          <h4>Redacting secrets from an application's standour output and standard error</h4>
           <p>
             We wanted to mitigate that risk of environment variables showing up
             in logs from processes that dump the whole environment. We did so by
@@ -1137,9 +1132,9 @@
             A process can simply be thought of as a running program. When you
             run your application, it runs in a process. The Node.js runtime allows spinning out sub-processes called "child" processes, and Haven uses the spawn method from Node's built-in <code>child_process</code> library. When using the spawn method, you specify the
             program you want to run and that program is run as a child process.
-            The stdIO of the child process is piped to and from the parent
-            process: stdIn is piped in to the child from the parent, and stdOut
-            and stdErr are piped out from the child to the parent.
+            The standard I/O of the child process is piped to and from the parent
+            process: standard input is piped in to the child from the parent, and standard output
+            and standard error are piped out from the child to the parent.
           </p>
           <img
             src="assets/images/case-study/child-process.png"
@@ -1148,15 +1143,15 @@
           <p>
             This is what allows us to provide a simple wrapper for your
             application, making for an easy-to-use secrets manager, as well as
-            what lets us intercept any logging of secrets on stdOut and stdErr
+            what lets us intercept any logging of secrets on standard output and standard error
             and redact them for extra security.
           </p>
           <br>
           <h5>How it works with your application</h5>
           <p>
             So how does this child process technique fit into the bigger
-            picture? In the example shown below, note that 'todos' is the
-            Haven project, 'prod' is the environment and 'nodemon todos.js' is
+            picture? In the example shown below, note that <code>todos</code> is the
+            Haven project, <code>prod</code> is the environment and <code>nodemon todos.js</code> is
             the command that is run by Haven.
           </p>
           <img
@@ -1169,7 +1164,7 @@
             using the spawn method from the Node child process library. The
             secrets are injected into this child process as environment
             variables, making them available for the application. Then, as the
-            application runs, Haven intercepts both stdOut and stdErr, redacts
+            application runs, Haven intercepts both standard output and standard error, redacts
             logged secrets, and logs the redacted result.
           </p>
           <img
@@ -1181,10 +1176,11 @@
           <h2>6 Future Work</h2>
           <br>
           <p>
-            And that's Haven! We're an open-source secrets manager for small teams, with a command line tool as well as a frontend for easy team management. For our next steps, we may add the ability for users to bulk-add secrets from JSON and YAML files. We may also add an email integration to make new-user creation even smoother.
+            And that's Haven! We're an open-source secrets manager for small teams, with a UI and CLI for easy team management. For our next steps, we plan to add the ability for users to add secrets in bulk from JSON and YAML files. We also plan to add an email integration to make new user creation even smoother.
           </p>
+          <br>
           <p>
-            As possible stretch goals, we may support the option for per-secret access controls (rather than per-project access controls), and we may also provide direct plug-ins and integrations with select credential providers to support dynamic secrets (that is, one-time use credentials).
+            In addition, we plan to support the option for per-secret access controls (rather than per-project access controls), as well as provide direct plug-ins and integrations with select credential providers to support dynamic secrets (i.e., one-time use credentials).
           </p>
           <p>
           <br>
@@ -1249,7 +1245,6 @@
           <br>
           <h2>The Team</h2>
           <br>
-          <p>Haven is built by a remote team of software engineers. We're currently looking for our next opportunities. Let's talk!</p>
           <br>
           <div class="section team-section">
             <div class="container">
