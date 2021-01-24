@@ -918,6 +918,10 @@ a:hover {
   margin-top: 40px;
 }
 
+#intro-paragraph-2 {
+  margin-top: 0px;
+}
+
 .white-paragraph.centered {
   max-width: 550px;
   text-align: center;
@@ -1161,6 +1165,7 @@ a:hover {
   font-size: 16px;
   text-decoration: none;
   text-transform: uppercase;
+  font-weight: 600;
 }
 
 .primary-button.right-margin {
