@@ -687,7 +687,7 @@ ul.team-member-icons li {
 body {
   background-color: #fff;
   font-family: Inter, sans-serif;
-  color: #898d8f;
+  color: #b5bbbf;
   /*  font-size: 14px;*/
   line-height: 20px;
 }
@@ -929,6 +929,7 @@ a:hover {
 
 #team-paragraph {
   max-width: 565px;
+  display: none;
 }
 
 .white-paragraph.bottom-margin {
